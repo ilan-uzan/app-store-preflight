@@ -8,7 +8,7 @@ A Claude Code skill + multi-agent workflow that reviews your app against **every
 
 [![validate](https://github.com/ilan-uzan/app-store-preflight/actions/workflows/validate.yml/badge.svg)](https://github.com/ilan-uzan/app-store-preflight/actions/workflows/validate.yml)
 ![Guidelines](https://img.shields.io/badge/App%20Review%20Guidelines-Oct%2016%2C%202026-blue)
-![Checks](https://img.shields.io/badge/checks-1772-success)
+![Checks](https://img.shields.io/badge/checks-1773-success)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 </div>
@@ -23,11 +23,12 @@ App Store Preflight checks all of it in one command.
 
 ## What makes it different
 
-- **Nothing is invented.** Every check quotes Apple word for word: the [App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/), [App Review Help](https://developer.apple.com/help/app-review/), [App Store Connect Help](https://developer.apple.com/help/app-store-connect/) and Apple's developer documentation. The scraped source texts ship in [`source/`](skills/app-store-preflight/source), and CI fails if any of the **10,914 quoted passages** doesn't appear verbatim in them.
-- **Every guideline, not a top 10.** All 132 numbered guideline sections (1 to 5.6.4), plus privacy manifests and required-reason APIs, App Privacy labels and ATT, metadata limits and screenshot specs, age rating, export compliance, EU DSA trader status, in-app purchase and subscription setup, account deletion, Sign in with Apple, purpose strings, TestFlight and build statuses, agreements, tax and banking, pricing and availability, App Clips, Game Center, in-app events and custom product pages: **1,772 checks** in total.
+- **Nothing is invented.** Every check quotes Apple word for word: the [App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/), [App Review Help](https://developer.apple.com/help/app-review/), [App Store Connect Help](https://developer.apple.com/help/app-store-connect/) and Apple's developer documentation. The scraped source texts ship in [`source/`](skills/app-store-preflight/source), and CI fails if any of the **10,915 quoted passages** doesn't appear verbatim in them.
+- **Every guideline, not a top 10.** All 132 numbered guideline sections (1 to 5.6.4), plus privacy manifests and required-reason APIs, App Privacy labels and ATT, metadata limits and screenshot specs, age rating, export compliance, EU DSA trader status, in-app purchase and subscription setup, account deletion, Sign in with Apple, purpose strings, TestFlight and build statuses, agreements, tax and banking, pricing and availability, App Clips, Game Center, in-app events and custom product pages: **1,773 checks** in total.
 - **It reads your app first.** A profiler works out what your app actually does (login? subscriptions? UGC? kids? health? location? AI?). Guidelines that don't apply are marked N/A with a reason, not padded into the report.
 - **Failures are cross-examined.** For every ❌, a separate skeptic agent tries to prove it wrong (the deletion flow is on another screen; the SDK ships its own manifest; the purpose string is set in build settings). Only failures that survive are reported.
 - **It checks App Store Connect too.** With Claude in Chrome or Playwright MCP, a read-only browser agent goes through your listing and compares it with the code: privacy labels vs the data your code collects, IAP product IDs in code vs products in App Store Connect, demo account present when login is required, age rating vs content, screenshots for every required size.
+- **Backtested on real rejections.** Run against an app build that App Review rejected under guideline 5.6 (a paywall "Close" button that opened a discount offer instead of closing), preflight fails that build with `file:line` evidence and passes the fixed resubmission.
 - **Then it fixes.** Confirmed code failures are fixed on a new git branch, one fixer at a time, followed by a rebuild and independent re-verification of every fix. App Store Connect changes are proposed and applied only with your approval. It never submits for you.
 
 ## Install

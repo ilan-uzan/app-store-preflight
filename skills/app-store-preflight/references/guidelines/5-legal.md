@@ -737,6 +737,11 @@ Retrieved: 2026-10-30
   - surface: runtime
   - verify: Exercise paywalls/purchase flows and inspect paywall views in code for anything that could trick a user into a purchase they did not intend (e.g. disguised or misleading purchase actions, obscured price or what is being bought).
   - fix: Remove or redesign deceptive purchase UI so users knowingly choose each purchase.
+- **[5.6-07]** Do the paywall's and purchase flow's controls do what their labels say, with no manipulative pattern around leaving the offer?
+  - quote: "engage in any other manipulative practices within or outside of the app"
+  - surface: runtime
+  - verify: In every paywall/offer view, find each control labelled or styled as dismissing (X, "Close", "Not now", "Maybe later", "Skip", swipe-down). Trace its action in code: it must dismiss. FAIL if a dismiss-labelled control presents another offer, a discount card or a second paywall instead of closing, or if declining loops back to the paywall so the sheet can only be left by buying. A hard paywall with no close control is not by itself this pattern (judge it under 3.1.1/3.1.2); a control that claims to close but doesn't is. Implementation guidance, not Apple text: App Review has rejected this exact pattern under 5.6 in real submissions.
+  - fix: Make every dismiss-labelled control dismiss. Any retention offer must be presented as its own clearly labelled choice, never behind the close control.
 - **[5.6-03]** Does the app avoid forcing users to share unnecessary data?
   - quote: "force them to share unnecessary data"
   - surface: runtime
