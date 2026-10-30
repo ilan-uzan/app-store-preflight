@@ -1,0 +1,22 @@
+name: 🤔 Wrong verdict (false positive / false negative)
+description: Preflight marked a check FAIL that's actually fine, or PASS when it isn't.
+labels: ["wrong-verdict", "needs-triage"]
+body:
+  - type: input
+    id: check
+    attributes:
+      label: Check ID
+      placeholder: "e.g. 5.1.1-02, PRIV-14, META-37"
+    validations: { required: true }
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What happened
+      options: ["Marked FAIL/WARN but the app complies", "Marked PASS but the app does not comply", "Marked NA but it applies", "The check itself misreads Apple's text"]
+    validations: { required: true }
+  - type: textarea
+    id: details
+    attributes:
+      label: Evidence
+      description: The verdict's evidence and reason from the report, and why it's wrong. Code snippets welcome; no secrets.
+    validations: { required: true }

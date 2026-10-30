@@ -1,0 +1,35 @@
+name: 🚫 Rejection preflight missed
+description: App Review rejected your app for something preflight didn't catch (or passed).
+labels: ["missed-rejection", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you! Real rejections are the most valuable input this project gets. **Remove anything private** (app name, account details, reviewer names) before posting.
+  - type: input
+    id: guideline
+    attributes:
+      label: Guideline number(s) in the rejection
+      placeholder: "e.g. 2.1, 3.1.2(c), 5.1.1(v)"
+    validations: { required: true }
+  - type: textarea
+    id: message
+    attributes:
+      label: What App Review said (redacted)
+      description: Paste the relevant part of the rejection message.
+    validations: { required: true }
+  - type: textarea
+    id: preflight
+    attributes:
+      label: What preflight reported for it
+      description: The verdict for the related check IDs (from PREFLIGHT_REPORT.md), or "not run".
+  - type: textarea
+    id: apple
+    attributes:
+      label: Apple's wording that covers it (if you know)
+      description: A link to the Apple page and the exact sentence. Every check has to quote Apple, so this makes the fix fast.
+  - type: input
+    id: platform
+    attributes:
+      label: Platform / app type
+      placeholder: "iOS app with subscriptions, React Native, watchOS…"

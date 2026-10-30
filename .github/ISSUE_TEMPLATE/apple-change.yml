@@ -1,0 +1,16 @@
+name: 📜 Apple changed a guideline or requirement
+description: Apple updated the guidelines, App Store Connect, or a required field and the references are out of date.
+labels: ["apple-update"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Apple page
+      placeholder: https://developer.apple.com/...
+    validations: { required: true }
+  - type: textarea
+    id: change
+    attributes:
+      label: What changed
+      description: Quote the new text exactly, and say which check IDs it affects if you know.
+    validations: { required: true }

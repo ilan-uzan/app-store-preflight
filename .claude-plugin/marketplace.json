@@ -1,0 +1,12 @@
+{
+  "name": "app-store-preflight",
+  "owner": { "name": "Ilan Uzan", "url": "https://github.com/ilan-uzan" },
+  "plugins": [
+    {
+      "name": "app-store-preflight",
+      "source": "./",
+      "description": "Check your app against every App Store Review Guideline and App Store Connect requirement before you submit, then fix what fails.",
+      "category": "development"
+    }
+  ]
+}

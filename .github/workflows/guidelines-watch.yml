@@ -1,0 +1,28 @@
+name: guidelines-watch
+# Opens an issue when Apple publishes a newer App Review Guidelines revision.
+on:
+  schedule: [{ cron: "0 8 * * 1" }]
+  workflow_dispatch:
+permissions: { issues: write, contents: read }
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - id: check
+        run: |
+          set +e
+          out=$(python3 -I skills/app-store-preflight/scripts/check_guidelines_version.py skills/app-store-preflight/source/app-review-guidelines.md)
+          code=$?
+          echo "$out"
+          { echo "message<<EOF"; echo "$out"; echo "EOF"; echo "newer=$([ $code -eq 1 ] && echo true || echo false)"; } >> "$GITHUB_OUTPUT"
+      - if: steps.check.outputs.newer == 'true'
+        env: { GH_TOKEN: "${{ github.token }}", MSG: "${{ steps.check.outputs.message }}" }
+        run: |
+          gh issue list --label guidelines-update --state open --json number | grep -q number && exit 0
+          gh label create guidelines-update --color D93F0B 2>/dev/null || true
+          gh issue create --title "Apple updated the App Review Guidelines" --label guidelines-update --body "$MSG
+
+          Run \`skills/app-store-preflight/scripts/update_sources.sh\`, update the affected reference files, then \`validate.sh\`."
