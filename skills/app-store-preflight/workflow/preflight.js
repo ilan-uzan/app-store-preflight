@@ -53,7 +53,7 @@ Load the check: ${SHOW} ${id}
 Read the auditor's verdict for ${id} (with its evidence) in the JSON files under ${RUN}/verdicts/ (grep for "${id}").
 ${PROFILE}
 ${DATA}
-Re-read the cited code yourself and search for counter-evidence (e.g. the "missing" account deletion exists in another screen; the purpose string is set via INFOPLIST_KEY_ build settings; the SDK ships its own privacy manifest; the feature is not present at all, so the check is NA). Also check the auditor didn't overreach beyond the quote.
+If the evidence comes from App Store Connect, the browser agent's record of each page is in ${RUN}/asc-snapshot-*.md: use it as what the page showed (do not open a browser), and check that the observation really violates the quote. Otherwise re-read the cited code yourself. Search for counter-evidence (e.g. the "missing" account deletion exists in another screen; the purpose string is set via INFOPLIST_KEY_ build settings; the SDK ships its own privacy manifest; the feature is not present at all, so the check is NA). Also check the auditor didn't overreach beyond the quote.
 upheld = true only if the ${kind} survives your scrutiny. If not upheld, give correctedVerdict (PASS, WARN, NA, MANUAL or ASC) and why.${VOTES > 1 ? ` You are skeptic ${k + 1} of ${VOTES}.` : ''}
 ${k === 0 ? `Write your result as a JSON object {"id","upheld","correctedVerdict","reason"} to ${RUN}/verdicts/verify-${id}.json and validate it with python3 -I -m json.tool.` : 'Do not write files.'}`,
     { label: `verify:${id}${VOTES > 1 ? `#${k + 1}` : ''}`, phase: 'Verify', schema: VERIFY_SCHEMA })))
@@ -65,13 +65,13 @@ ${k === 0 ? `Write your result as a JSON object {"id","upheld","correctedVerdict
 
 const auditChain = pipeline(A.batches,
   (b, _b, i) => agent(`You are an App Store review auditor. Evaluate these checks for the app at ${ROOT}.
-Load them: ${SHOW} --batch ${i}
+Load them: ${SHOW} --batch ${Number.isInteger(b.n) ? b.n : i}
 Each check quotes Apple's text (from references/${b.file}; the full reference is ${SK}/references/${b.file}). The project scan is ${RUN}/facts.json.
 ${PROFILE}
 ${DATA}
 For each check: decide whether it applies (use the profile; a check about e.g. VPN apps is NA for an app that is not a VPN), then verify it against the actual code/config with Grep/Read, following the check's verify steps. surface=runtime checks: decide from the code as far as possible and use MANUAL only if the behaviour truly cannot be determined statically. surface=manual: use MANUAL unless the code settles it.
 ${VERDICTS}
-${VERDICT_FILE(`${RUN}/verdicts/audit-${String(i).padStart(3, '0')}.json`)}
+${VERDICT_FILE(`${RUN}/verdicts/audit-${String(Number.isInteger(b.n) ? b.n : i).padStart(3, '0')}.json`)}
 Return the IDs per verdict (fail, warn, asc, manual), the fixable IDs, and how many checks you evaluated.`,
     { label: `audit:${b.file.replace(/^.*\//, '').replace('.md', '')}#${i}`, phase: 'Audit', schema: AUDIT_SCHEMA }),
   (r, b) => {
@@ -108,7 +108,9 @@ ${VERDICT_FILE(`${RUN}/verdicts/asc-${g.key}.json`)}
 Also write everything you observed (field values, statuses, counts) to ${RUN}/asc-snapshot-${g.key}.md so the developer can review it. For each FAIL include in fixPlan the exact App Store Connect page + field and the value to set (if it can be derived from the app), so the skill can offer to apply it with the developer's approval.
 Return needsLogin, and the IDs per verdict.`,
       { label: `asc:${g.key}`, phase: 'App Store Connect', schema: { type: 'object', properties: { needsLogin: { type: 'boolean' }, fail: LIST, warn: LIST, evaluated: { type: 'number' } }, required: ['needsLogin', 'fail', 'warn'] } })
-    out.push({ group: g.key, result: r })
+    const raised = r ? [...(r.fail || []).map(id => [id, 'FAIL']), ...(r.warn || []).map(id => [id, 'WARN'])] : []
+    const verified = (await parallel(raised.map(([id, kind]) => () => verifyOne(id, kind)))).filter(Boolean)
+    out.push({ group: g.key, result: r, verified })
     if (r && r.needsLogin) { log('App Store Connect needs sign-in -- remaining App Store Connect groups skipped'); break }
   }
   return { groups: out }
@@ -130,7 +132,8 @@ const [audits, asc, runtime] = await parallel([() => auditChain, () => ascChain,
 const auditRows = (audits || []).filter(Boolean)
 const lost = auditRows.filter(r => !r.audit).map(r => r.batch.file)
 if (lost.length) log(`audit batches with no result (their checks show as not evaluated): ${lost.join(', ')}`)
-const verified = auditRows.flatMap(r => r.verified)
+const ascVerified = ((asc && asc.groups) || []).flatMap(g => g.verified || [])
+const verified = [...auditRows.flatMap(r => r.verified), ...ascVerified]
 const confirmedFails = verified.filter(v => v.kind === 'FAIL' && v.upheld).map(v => v.id)
 const fixable = new Set(auditRows.flatMap(r => (r.audit && r.audit.fixable) || []))
 log(`audit: ${verified.filter(v => v.kind === 'FAIL').length} failures raised, ${confirmedFails.length} confirmed by verification; ${verified.filter(v => !v.upheld).length} findings overturned`)
