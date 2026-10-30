@@ -44,6 +44,8 @@ python3 -I skills/app-store-preflight/scripts/build_checks.py skills/app-store-p
 python3 -I skills/app-store-preflight/scripts/show_checks.py /tmp/checks.json 2.3.3-04
 ```
 
+Run the script tests with `python3 -I -m unittest discover -s tests -v`. CI runs them too, along with `validate.sh`.
+
 Then run `/app-store-preflight` on a real app in Claude Code, in audit-only mode, and look at the verdict for your check.
 
 ## When Apple updates the guidelines

@@ -112,7 +112,7 @@ def main():
         pass
 
     if counts["FAIL"]:
-        status = f"❌ NOT READY — {counts['FAIL']} blocking issue(s) remain"
+        status = f"❌ NOT READY — {counts['FAIL']} failed check(s) to fix"
     elif counts["WARN"] or counts["ASC"] or counts["MANUAL"] or counts["UNKNOWN"]:
         status = "⚠️ READY AFTER YOU CONFIRM THE ITEMS BELOW"
     else:
@@ -134,32 +134,67 @@ def main():
     if profile.get("summary"):
         w(f"**App profile:** {profile['summary']}\n")
 
-    def table(title, rows, cols):
+    def table(title, rows, cols, collapsed=False):
         if not rows:
             return
-        w(f"## {title}\n")
+        if collapsed:
+            w(f"<details><summary><b>{title}</b> ({len(rows)})</summary>\n")
+        else:
+            w(f"## {title}\n")
         w("| " + " | ".join(h for h, _ in cols) + " |")
         w("|" + "---|" * len(cols))
         for r in rows:
             w("| " + " | ".join(cell(fn(r)) for _, fn in cols) + " |")
-        w("")
+        w("\n</details>\n" if collapsed else "")
+
+    def issue_key(r):
+        # Findings that cite the same place are one issue: first path[:line] or App Store Connect location.
+        loc = (r["location"] or r["evidence"] or "").strip()
+        first = re.split(r"[;,]| and ", loc)[0].strip().lower()
+        m = re.match(r"([\w./ +-]+\.[a-z0-9]+)(?::(\d+))?", first)
+        return f"{m.group(1)}:{m.group(2) or ''}" if m else (first or r["id"])
+
+    def grouped(rows):
+        groups = {}
+        for r in rows:
+            groups.setdefault(issue_key(r), []).append(r)
+        return sorted(groups.values(), key=lambda g: (-len(g), g[0]["id"]))
 
     gl = lambda r: f"{r['unit']} {r['unitTitle']}"
-    table("❌ Blocking issues (fix before submitting)", [r for r in results if r["verdict"] == "FAIL"],
-          [("Check", lambda r: r["id"]), ("Guideline", gl), ("Problem", lambda r: r["reason"] or r["question"]),
-           ("Evidence", lambda r: r["location"] or r["evidence"]), ("How to fix", lambda r: r["fixPlan"] or r["fix"])])
+    ids = lambda g: ", ".join(x["id"] for x in g)
+    gls = lambda g: "; ".join(dict.fromkeys(gl(x) for x in g))
+    fails = grouped([r for r in results if r["verdict"] == "FAIL"])
+    warns = grouped([r for r in results if r["verdict"] == "WARN"])
+    fails_n = sum(len(g) for g in fails)
+    if fails:
+        w(f"## ❌ Blocking issues: {len(fails)} issue(s) from {fails_n} failed check(s)\n")
+        w("Fix these before submitting. Checks that cite the same place are merged into one issue.\n")
+        w("| # | Issue | Guideline(s) | Evidence | How to fix | Checks |")
+        w("|---|---|---|---|---|---|")
+        for i, g in enumerate(fails, 1):
+            r = g[0]
+            w(f"| {i} | {cell(r['reason'] or r['question'])} | {cell(gls(g), 120)} | {cell(r['location'] or r['evidence'], 120)} | "
+              f"{cell(r['fixPlan'] or r['fix'])} | {cell(ids(g), 80)} |")
+        w("")
     table("🔧 Fixed by preflight", [r for r in results if r["verdict"] == "FIXED"],
           [("Check", lambda r: r["id"]), ("Guideline", gl), ("Change", lambda r: (r["fix"] or {}).get("summary", "")),
            ("Files", lambda r: ", ".join((r["fix"] or {}).get("files", []))),
            ("Verify by", lambda r: (r["fix"] or {}).get("howToVerify", ""))])
-    table("⚠️ Warnings", [r for r in results if r["verdict"] == "WARN"],
-          [("Check", lambda r: r["id"]), ("Guideline", gl), ("Concern", lambda r: r["reason"] or r["question"]),
-           ("Evidence", lambda r: r["location"] or r["evidence"])])
+    if warns:
+        w(f"## ⚠️ Warnings: {len(warns)} issue(s)\n")
+        w("Probable problems or Apple \"should\" advice not followed. Confirmed ones first.\n")
+        w("| Issue | Guideline(s) | Evidence | Status | Checks |")
+        w("|---|---|---|---|---|")
+        for g in sorted(warns, key=lambda g: (not any((x.get("verification") or {}).get("upheld") for x in g), -len(g))):
+            r = g[0]
+            status_w = "✔ skeptic upheld" if any((x.get("verification") or {}).get("upheld") for x in g) else "not cross-examined"
+            w(f"| {cell(r['reason'] or r['question'])} | {cell(gls(g), 100)} | {cell(r['location'] or r['evidence'], 100)} | {status_w} | {cell(ids(g), 60)} |")
+        w("")
     table("🌐 Check in App Store Connect", [r for r in results if r["verdict"] == "ASC"],
           [("Check", lambda r: r["id"]), ("Guideline", gl), ("What to confirm", lambda r: r["reason"] or r["question"]),
-           ("Where", lambda r: r["verify"])])
+           ("Where", lambda r: r["verify"])], collapsed=True)
     table("✋ Only you can confirm", [r for r in results if r["verdict"] == "MANUAL"],
-          [("Check", lambda r: r["id"]), ("Guideline", gl), ("Question", lambda r: r["reason"] or r["question"])])
+          [("Check", lambda r: r["id"]), ("Guideline", gl), ("Question", lambda r: r["reason"] or r["question"])], collapsed=True)
     unknown = [r for r in results if r["verdict"] == "UNKNOWN"]
     if unknown:
         files = {}

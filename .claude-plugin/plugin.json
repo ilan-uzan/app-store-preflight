@@ -1,6 +1,6 @@
 {
   "name": "app-store-preflight",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Pre-submission App Store review for Claude Code: checks your app against every App Review Guideline and App Store Connect requirement (quoted verbatim from Apple), drives App Store Connect in the browser to compare the listing with the app, verifies every failure with a skeptic agent, then fixes and documents what it can.",
   "author": { "name": "Ilan Uzan", "url": "https://github.com/ilan-uzan" },
   "homepage": "https://github.com/ilan-uzan/app-store-preflight",

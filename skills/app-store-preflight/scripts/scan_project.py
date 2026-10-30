@@ -177,7 +177,7 @@ def pbxproj_settings(text):
     )
     out = {}
     for line in text.splitlines():
-        m = re.match(r"\s*\"?([A-Z_]+(?:\[[^\]]*\])?)\"?\s*=\s*(.+?);\s*$", line)
+        m = re.match(r"\s*\"?([A-Za-z0-9_]+(?:\[[^\]]*\])?)\"?\s*=\s*(.+?);\s*$", line)
         if not m:
             continue
         key, value = m.group(1), m.group(2).strip().strip('"')
