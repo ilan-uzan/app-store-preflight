@@ -197,6 +197,7 @@ Guidelines version: "Last Updated: October 16, 2026"
 > It is your responsibility to remove content that violates this guideline, your terms of service, or your community standards. Developers who fail to implement appropriate safeguards or fail to remediate identified violations after notice may be considered in violation of the Developer Code of Conduct. If we find such content, we will ask you to remove it, and provide a plan to improve your compliance with this guideline. Based on your response, your app may be removed from the App Store until you can demonstrate improvements that bring your app into compliance. Egregious or repeated behavior is grounds for immediate removal of your app from the App Store, and from the Apple Developer Program.
 
 **Applies to:** Apps that enable users to create, generate, upload, share, or otherwise contribute content (including social media, user-generated content platforms, and AI content creation apps)
+**Requires:** ugc, chat-social, generative-ai
 
 **Related:** Developer Code of Conduct
 
@@ -248,6 +249,7 @@ Guidelines version: "Last Updated: October 16, 2026"
 > - (a) Creator apps must provide a way for users to identify content that exceeds the app’s age rating, and use an age restriction mechanism based on verified or declared age to limit access by underage users.
 
 **Applies to:** Apps which feature content from a specific community of users called “creators”
+**Requires:** ugc, chat-social, mini-apps
 
 **Related:** Guideline 1.2; Guideline 3.1.1
 
@@ -290,6 +292,7 @@ Guidelines version: "Last Updated: October 16, 2026"
 > You must comply with applicable privacy laws around the world relating to the collection of data from children online. Be sure to review the Privacy section of these guidelines for more information. In addition, Kids Category apps may not send personally identifiable information or device information to third parties. Apps in the Kids Category should not include third-party analytics or third-party advertising. This provides a safer experience for kids. In limited cases, third-party analytics may be permitted provided that the services do not collect or transmit the IDFA or any identifiable information about children (such as name, date of birth, email address), their location, or their devices. This includes any device, network, or other information that could be used directly or combined with other information to identify users and their devices. Third-party contextual advertising may also be permitted in limited cases provided that the services have publicly documented practices and policies for Kids Category apps that include human review of ad creatives for age appropriateness.
 
 **Applies to:** Apps that participate in the Kids Category (and apps that previously did, where customers expect them to follow Kids Category requirements)
+**Requires:** kids
 
 **Related:** parental gates; Privacy section of these guidelines
 
@@ -371,6 +374,7 @@ Guidelines version: "Last Updated: October 16, 2026"
 > If your medical app has received regulatory clearance, please submit a link to that documentation with your app.
 
 **Applies to:** Medical apps that could provide inaccurate data or information, or that could be used for diagnosing or treating patients
+**Requires:** health-medical, healthkit
 
 - **[1.4.1-01]** Does the app clearly disclose data and methodology to support accuracy claims relating to health measurements?
   - quote: "Apps must clearly disclose data and methodology to support accuracy claims relating to health measurements"
@@ -404,6 +408,7 @@ Guidelines version: "Last Updated: October 16, 2026"
 > Drug dosage calculators must come from the drug manufacturer, a hospital, university, health insurance company, pharmacy or other approved entity, or receive approval by the FDA or one of its international counterparts. Given the potential harm to patients, we need to be sure that the app will be supported and updated over the long term.
 
 **Applies to:** Apps that include drug dosage calculators
+**Requires:** health-medical
 
 - **[1.4.2-01]** Does the app contain a drug dosage calculator?
   - quote: "Drug dosage calculators"

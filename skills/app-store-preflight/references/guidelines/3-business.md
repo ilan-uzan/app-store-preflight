@@ -163,6 +163,7 @@ Guidelines document "Last Updated: October 16, 2026".
 > 3.1.2 Subscriptions: Apps may offer auto-renewable in-app purchase subscriptions, regardless of category on the App Store. When incorporating auto-renewable subscriptions into your app, be sure to follow the guidelines below.
 
 **Applies to:** Apps offering auto-renewable in-app purchase subscriptions
+**Requires:** iap, subscriptions
 
 - **[3.1.2-01]** If the app incorporates auto-renewable subscriptions, does it follow the guidelines in 3.1.2(a)–(c)?
   - quote: "When incorporating auto-renewable subscriptions into your app, be sure to follow the guidelines below."
@@ -240,6 +241,7 @@ Guidelines document "Last Updated: October 16, 2026".
 > - 3.1.2(b) Upgrades and Downgrades: Users should have a seamless upgrade/downgrade experience and should not be able to inadvertently subscribe to multiple variations of the same thing. Review best practices on managing your subscription upgrade and downgrade options.
 
 **Applies to:** Apps offering multiple auto-renewable subscription levels or variations
+**Requires:** iap, subscriptions
 
 **Related:** best practices on managing your subscription upgrade and downgrade options
 
@@ -260,6 +262,7 @@ Guidelines document "Last Updated: October 16, 2026".
 > - 3.1.2(c) Subscription Information: Before asking a customer to subscribe, you should clearly describe what the user will get for the price. How many issues per month? How much cloud storage? What kind of access to your service? Ensure you clearly communicate the requirements described in Schedule 2 of the Apple Developer Program License Agreement.
 
 **Applies to:** Apps offering auto-renewable subscriptions
+**Requires:** iap, subscriptions
 
 **Related:** Schedule 2 of the Apple Developer Program License Agreement
 
@@ -434,6 +437,7 @@ Guidelines document "Last Updated: October 16, 2026".
 > 3.1.5 Cryptocurrencies:
 
 **Applies to:** Apps involving cryptocurrencies (see 3.1.5(i)–(v))
+**Requires:** crypto
 
 **Status:** Heading only — requirements are in 3.1.5(i)–(v). No checks.
 
@@ -443,6 +447,7 @@ Guidelines document "Last Updated: October 16, 2026".
 > - (i) Wallets: Apps may facilitate virtual currency storage, provided they are offered by developers enrolled as an organization.
 
 **Applies to:** Apps that facilitate virtual currency storage
+**Requires:** crypto
 
 - **[3.1.5(i)-01]** If the app facilitates virtual currency storage, is it offered by a developer enrolled as an organization?
   - quote: "provided they are offered by developers enrolled as an organization"
@@ -469,6 +474,7 @@ Guidelines document "Last Updated: October 16, 2026".
 > - (iii) Exchanges: Apps may facilitate transactions or transmissions of cryptocurrency on an approved exchange, provided they are offered only in countries or regions where the app has appropriate licensing and permissions to provide a cryptocurrency exchange.
 
 **Applies to:** Apps facilitating cryptocurrency transactions or transmissions
+**Requires:** crypto
 
 - **[3.1.5(iii)-01]** Are cryptocurrency transactions/transmissions facilitated on an approved exchange?
   - quote: "Apps may facilitate transactions or transmissions of cryptocurrency on an approved exchange"
@@ -505,6 +511,7 @@ Guidelines document "Last Updated: October 16, 2026".
 > - (v) Cryptocurrency apps may not offer currency for completing tasks, such as downloading other apps, encouraging other users to download, posting to social networks, etc.
 
 **Applies to:** Cryptocurrency apps
+**Requires:** crypto
 
 - **[3.1.5(v)-01]** Is the app free of offering currency for completing tasks such as downloading other apps, encouraging others to download, or posting to social networks?
   - quote: "Cryptocurrency apps may not offer currency for completing tasks, such as downloading other apps, encouraging other users to download, posting to social networks, etc."
@@ -722,6 +729,7 @@ Guidelines document "Last Updated: October 16, 2026".
 > - (iii) Artificially increasing the number of impressions or click-throughs of ads, as well as apps that are designed predominantly for the display of ads.
 
 **Applies to:** Apps displaying ads
+**Requires:** ads
 
 - **[3.2.2(iii)-01]** Is the app free of artificially increasing ad impressions or click-throughs?
   - quote: "Artificially increasing the number of impressions or click-throughs of ads"

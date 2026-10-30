@@ -477,6 +477,7 @@ Retrieved: 2026-10-30
 > Note: To test subscriptions entering or exiting billing retry, you must test with a Sandbox Apple Account to subscribe and use the sandbox account settings to simulate this scenario. Learn more about testing failing subscription renewals and In-App Purchases.
 
 **Applies to:** Apps with auto-renewable subscriptions tested in TestFlight
+**Requires:** subscriptions, iap
 
 ## BUILD.21 Testing subscriptions and In-App Purchases in TestFlight — Test In-App Purchase scenarios in TestFlight with your Sandbox Apple Account
 
@@ -490,6 +491,7 @@ Retrieved: 2026-10-30
 > Note:  You can only use a Sandbox Apple Account to test apps within your own developer account.
 
 **Applies to:** Apps with In-App Purchases tested in TestFlight
+**Requires:** iap, subscriptions
 
 ## BUILD.22 Build upload statuses
 

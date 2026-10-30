@@ -19,24 +19,29 @@ import sys
 UNIT_RE = re.compile(r"^##\s+(\S+)\s+(.*)$")
 CHECK_RE = re.compile(r"^- \*\*\[([^\]]+)\]\*\*\s+(.*)$")
 FIELD_RE = re.compile(r"^\s+- (quote|surface|verify|fix):\s?(.*)$")
+REQUIRES_RE = re.compile(r"^\*\*Requires:\*\*\s*(.+)$")
 SURFACES = {"code", "asc", "runtime", "manual"}
 
 
 def parse_file(path, rel):
     checks, errors = [], []
-    unit_id, unit_title, current, field = None, None, None, None
+    unit_id, unit_title, current, field, requires = None, None, None, None, []
     with open(path, encoding="utf-8") as f:
         lines = f.read().splitlines()
     for n, line in enumerate(lines, 1):
         m = UNIT_RE.match(line)
         if m:
-            unit_id, unit_title, current, field = m.group(1), m.group(2).strip(), None, None
+            unit_id, unit_title, current, field, requires = m.group(1), m.group(2).strip(), None, None, []
+            continue
+        m = REQUIRES_RE.match(line)
+        if m and current is None:
+            requires = [f.strip() for f in m.group(1).split(",") if f.strip()]
             continue
         m = CHECK_RE.match(line)
         if m:
             current = {"id": m.group(1).strip(), "file": rel, "line": n, "unit": unit_id,
                        "unitTitle": unit_title, "question": m.group(2).strip(),
-                       "quote": "", "surface": "", "verify": "", "fix": ""}
+                       "quote": "", "surface": "", "verify": "", "fix": "", "requires": list(requires)}
             checks.append(current)
             field = None
             continue

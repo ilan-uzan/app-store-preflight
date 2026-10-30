@@ -33,7 +33,8 @@ A rejection you got is still valuable even if you can't find Apple's wording: op
    ```
 
    `surface` decides who evaluates it: `code` by the code auditors, `asc` by the App Store Connect browser agent, `runtime` by the Simulator agent, `manual` by asking the developer.
-4. Run `skills/app-store-preflight/scripts/validate.sh`. It fails if a quote isn't verbatim in `source/`, if a check ID is duplicated, if a check is malformed, or if the two workflow copies differ.
+4. Optional: if Apple's stated scope limits the whole unit to apps with a specific feature, add `**Requires:** <flag>[, <flag>…]` under its `**Applies to:**` line. The allowed flags are the profile flags in `workflow/preflight.js`. When the app's profile rules out every listed flag, the planner skips the unit's checks as NA, so tag only when no check in the unit could matter to an app without the feature. When unsure, leave it untagged: untagged checks are always evaluated.
+5. Run `skills/app-store-preflight/scripts/validate.sh`. It fails if a quote isn't verbatim in `source/`, if a check ID is duplicated, if a check is malformed, or if the two workflow copies differ.
 
 ## Test your change
 

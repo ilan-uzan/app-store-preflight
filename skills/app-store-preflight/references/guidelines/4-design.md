@@ -93,6 +93,7 @@ Retrieved: 2026-10-30
 > 4.2.1 Apps using ARKit should provide rich and integrated augmented reality experiences; merely dropping a model into an AR view or replaying animation is not enough.
 
 **Applies to:** Apps using ARKit
+**Requires:** arkit
 
 - **[4.2.1-01]** Does the ARKit experience go beyond merely dropping a model into an AR view or replaying an animation?
   - quote: "merely dropping a model into an AR view or replaying animation is not enough"
@@ -185,6 +186,7 @@ Retrieved: 2026-10-30
 > - (e) Thin clients for cloud-based apps are not appropriate for the App Store.
 
 **Applies to:** Remote desktop apps that mirror specific software or services rather than a generic mirror of the host device ((e) applies to thin clients for cloud-based apps)
+**Requires:** remote-desktop-streaming, webview
 
 - **[4.2.7-01]** Does the app only connect to a user-owned personal computer or dedicated game console?
   - quote: "The app must only connect to a user-owned host device that is a personal computer or dedicated game console owned by the user"
@@ -267,6 +269,7 @@ Retrieved: 2026-10-30
 > Apps hosting or containing extensions must comply with the App Extension Programming Guide, the Safari app extensions documentation, or the Safari web extensions documentation and should include some functionality, such as help screens and settings interfaces where possible. You should clearly and accurately disclose what extensions are made available in the app’s marketing text, and the extensions may not include marketing, advertising, or in-app purchases.
 
 **Applies to:** Apps hosting or containing extensions
+**Requires:** extensions-widgets, keyboard
 
 **Related:** App Extension Programming Guide; Safari app extensions documentation; Safari web extensions documentation
 
@@ -308,6 +311,7 @@ Retrieved: 2026-10-30
 > - Repurpose keyboard buttons for other behaviors (such as holding down the “return” key to launch the camera).
 
 **Applies to:** Apps with keyboard extensions (`com.apple.keyboard-service`)
+**Requires:** keyboard, extensions-widgets
 
 - **[4.4.1-01]** Does the keyboard provide keyboard input functionality (such as typed characters)?
   - quote: "Provide keyboard input functionality (such as typed characters);"
@@ -351,6 +355,7 @@ Retrieved: 2026-10-30
 > 4.4.2 Safari extensions must run on the current version of Safari on the relevant Apple operating system. They may not interfere with System or Safari UI elements and must never include malicious or misleading content or code. Violating this rule will lead to removal from the Apple Developer Program. Safari extensions should not claim access to more websites than strictly necessary to function.
 
 **Applies to:** Apps containing Safari extensions
+**Requires:** extensions-widgets, macos
 
 - **[4.4.2-01]** Does the Safari extension run on the current version of Safari on the relevant OS?
   - quote: "Safari extensions must run on the current version of Safari on the relevant Apple operating system."
@@ -500,6 +505,7 @@ Heading only; requirements are in 4.5.1–4.5.6 — no checks at this level.
 > 4.5.4 Push Notifications must not be required for the app to function, and should not be used to send sensitive personal or confidential information. Push Notifications should not be used for promotions or direct marketing purposes unless customers have explicitly opted in to receive them via consent language displayed in your app’s UI, and you provide a method in your app for a user to opt out from receiving such messages. Abuse of these services may result in revocation of your privileges.
 
 **Applies to:** Apps using Push Notifications
+**Requires:** push
 
 - **[4.5.4-01]** Does the app function when push notification permission is denied?
   - quote: "Push Notifications must not be required for the app to function"
@@ -573,6 +579,7 @@ Heading only; requirements are in 4.5.1–4.5.6 — no checks at this level.
 > Apps may offer certain software that is not embedded in the binary, specifically HTML5 and JavaScript mini apps and mini games, streaming games, chatbots, and plug-ins. Additionally, retro game console and PC emulator apps can offer to download games. You are responsible for all such software offered in your app, including ensuring that such software complies with these Guidelines and all applicable laws. Software that does not comply with one or more guidelines will lead to the rejection of your app. You must also ensure that the software adheres to the additional rules that follow in 4.7.1 through 4.7.5. These additional rules are important to preserve the experience that App Store customers expect, and to help ensure user safety.
 
 **Applies to:** Apps offering software not embedded in the binary (HTML5/JavaScript mini apps and mini games, streaming games, chatbots, plug-ins) and retro game console/PC emulator apps
+**Requires:** mini-apps, dynamic-code, webview, generative-ai, chat-social, game, remote-desktop-streaming
 
 - **[4.7-01]** Does all software offered in the app (mini apps/games, streaming games, chatbots, plug-ins, emulator games) comply with the Guidelines and applicable laws?
   - quote: "You are responsible for all such software offered in your app, including ensuring that such software complies with these Guidelines and all applicable laws."
@@ -594,6 +601,7 @@ Heading only; requirements are in 4.5.1–4.5.6 — no checks at this level.
 > - follow Guideline 3.1 in order to offer digital goods or services to end users.
 
 **Applies to:** Software offered under 4.7
+**Requires:** mini-apps, dynamic-code, webview, generative-ai, chat-social, game, remote-desktop-streaming
 
 - **[4.7.1-01]** Does the offered software follow all privacy guidelines, including Guideline 5.1 on collection, use, and sharing of data and sensitive data?
   - quote: "follow all privacy guidelines, including but not limited to the rules set forth in Guideline 5.1 concerning collection, use, and sharing of data, and sensitive data (such as health and personal data from kids)"
@@ -627,6 +635,7 @@ Heading only; requirements are in 4.5.1–4.5.6 — no checks at this level.
 > 4.7.2 Your app may not extend or expose native platform APIs or technologies to the software without prior permission from Apple.
 
 **Applies to:** Apps offering software under 4.7
+**Requires:** mini-apps, dynamic-code, webview, generative-ai, chat-social, game, remote-desktop-streaming
 
 - **[4.7.2-01]** Does the app avoid extending or exposing native platform APIs or technologies to the offered software (unless Apple granted prior permission)?
   - quote: "Your app may not extend or expose native platform APIs or technologies to the software without prior permission from Apple."
@@ -640,6 +649,7 @@ Heading only; requirements are in 4.5.1–4.5.6 — no checks at this level.
 > 4.7.3 Your app may not share data or privacy permissions to any individual software offered in your app without explicit user consent in each instance.
 
 **Applies to:** Apps offering software under 4.7
+**Requires:** mini-apps, dynamic-code, webview, generative-ai, chat-social, game, remote-desktop-streaming
 
 - **[4.7.3-01]** Does the app obtain explicit user consent each time before sharing data or privacy permissions with an individual piece of offered software?
   - quote: "Your app may not share data or privacy permissions to any individual software offered in your app without explicit user consent in each instance."
@@ -653,6 +663,7 @@ Heading only; requirements are in 4.5.1–4.5.6 — no checks at this level.
 > 4.7.4 You must provide an index of software and metadata available in your app. It must include universal links that lead to all of the software offered in your app.
 
 **Applies to:** Apps offering software under 4.7
+**Requires:** mini-apps, dynamic-code, webview, generative-ai, chat-social, game, remote-desktop-streaming
 
 - **[4.7.4-01]** Does the app provide an index of software and metadata available in the app?
   - quote: "You must provide an index of software and metadata available in your app."
@@ -671,6 +682,7 @@ Heading only; requirements are in 4.5.1–4.5.6 — no checks at this level.
 > 4.7.5 Your app must provide a way for users to identify software that exceeds the app’s age rating, and use an age restriction mechanism based on verified or declared age to limit access by underage users.
 
 **Applies to:** Apps offering software under 4.7
+**Requires:** mini-apps, dynamic-code, webview, generative-ai, chat-social, game, remote-desktop-streaming
 
 - **[4.7.5-01]** Does the app provide a way for users to identify software that exceeds the app’s age rating?
   - quote: "Your app must provide a way for users to identify software that exceeds the app’s age rating"
@@ -701,6 +713,7 @@ Heading only; requirements are in 4.5.1–4.5.6 — no checks at this level.
 > - Your app is a client for a specific third-party service and users are required to sign in to their mail, social media, or other third-party account directly to access their content.
 
 **Applies to:** Apps that use a third-party or social login service to set up or authenticate the user’s primary account (unless an exemption listed in the source applies)
+**Requires:** third-party-login, login
 
 - **[4.8-01]** Does the app use a third-party or social login (Facebook, Google, X, LinkedIn, Amazon, WeChat, etc.) for the user’s primary account?
   - quote: "Apps that use a third-party or social login service (such as Facebook Login, Google Sign-In, Log in with X, Sign In with LinkedIn, Login with Amazon, or WeChat Login) to set up or authenticate the user’s primary account"
@@ -743,6 +756,7 @@ Heading only; requirements are in 4.5.1–4.5.6 — no checks at this level.
 > - How to cancel
 
 **Applies to:** Apps using Apple Pay (recurring-payment checks apply to apps using Apple Pay for recurring payments)
+**Requires:** apple-pay
 
 **Related:** Apple Pay Marketing Guidelines; Human Interface Guidelines
 

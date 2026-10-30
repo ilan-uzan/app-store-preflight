@@ -50,7 +50,6 @@ If App Store Connect was chosen, ask the user to make sure they are signed in to
 RUN="<project>/.preflight/$(date +%Y%m%d-%H%M)"; mkdir -p "$RUN/verdicts" "$RUN/fixes" "$RUN/runtime"
 python3 -I <skill>/scripts/scan_project.py "<project>" "$RUN/facts.json"
 python3 -I <skill>/scripts/build_checks.py <skill>/references "$RUN/checks.json"
-python3 -I -c "import json,sys;d=json.load(open(sys.argv[1]));print(json.dumps([{'file':b['file']} for b in d['batches']]))" "$RUN/checks.json"
 ```
 
 - If `.preflight/` is not in the project's `.gitignore`, offer to add it.
@@ -64,10 +63,10 @@ Call Workflow with `name: "app-store-preflight:preflight"` (the plugin install).
 { "projectRoot": "<abs project>", "runDir": "<abs RUN>", "skillDir": "<abs skill>",
   "mode": "fix" | "audit", "asc": "chrome" | "playwright" | "none", "ascApp": "<name or null>",
   "runtime": true | false, "allowReinstall": true | false, "verifyVotes": 1 | 3,
-  "batches": [{"file": "..."}, ...] }
+  "only": ["guidelines/", "asc/privacy-manifests.md"] }
 ```
 
-Pass `batches` exactly as printed in step 3 (one entry per audit batch, in order; each auditor loads its checks by batch number from `checks.json`), as a JSON value, not as a string. Tell the user it runs in the background, and that `/workflows` shows live progress.
+`only` is optional: leave it out to cover everything, or pass reference-file path prefixes (as a JSON array, not a string) when the user asks for a narrower check, e.g. only privacy. After profiling, the workflow's planner (`scripts/plan_checks.py`) skips the checks whose Apple-stated scope (`**Requires:**` in the references) needs a feature the profile has ruled out. Each skipped check is recorded as ➖ NA with the reason, and only the rest go to agents. Tell the user it runs in the background, and that `/workflows` shows live progress.
 
 What the workflow does: profiles the app (which features exist, so irrelevant guidelines become N/A) → audits every check batch against the code, with a skeptic trying to refute each failure as soon as its batch finishes → reads App Store Connect in parallel (read-only) and compares it with the app → optionally runs the app in the Simulator → in fix mode, applies fixes one fixer at a time, rebuilds, and has an independent agent re-verify every fix.
 

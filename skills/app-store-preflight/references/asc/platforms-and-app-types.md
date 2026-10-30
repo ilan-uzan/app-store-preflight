@@ -24,6 +24,7 @@ Retrieved: 2026-10-30
 > Note: iOS screenshots are also required for apps with an iOS component, but not for watch-only apps.
 
 **Applies to:** Apps for Apple Watch ("either as iOS apps with a watchOS app or as watchOS-only apps")
+**Requires:** watchos
 
 - **[PLAT-01]** Does the App Store description include the app's functionality on Apple Watch?
   - quote: "Ensure your description includes the app's functionality on Apple Watch."
@@ -329,6 +330,7 @@ Retrieved: 2026-10-30
 > Note: To update this information at any time, click Edit next to Contains High Motion. The change reflects on the App Store immediately.
 
 **Applies to:** All visionOS apps
+**Requires:** visionos
 
 - **[PLAT-25]** Is the app motion information set for the visionOS app?
   - quote: "You’ll need to set this information in order to submit your visionOS app for review."
@@ -351,6 +353,7 @@ Retrieved: 2026-10-30
 > | No, this app doesn't contain high motion | Doesn't have frequent fast or sudden camera movements, quick turns, or unusual orientations. |
 
 **Applies to:** All visionOS apps
+**Requires:** visionos
 
 ## PLAT.12 About app motion
 
@@ -381,6 +384,7 @@ Retrieved: 2026-10-30
 > - Apps that host a variety of third-party content (like user-uploaded videos or HTML5 games) shouldn’t have a high motion label, unless the app’s intent is to have lots of content with high motion (like user uploads of their first-person thrill-seeking experiences).
 
 **Applies to:** All visionOS apps
+**Requires:** visionos
 
 - **[PLAT-26]** If the app's virtual camera never moves without the user moving their head or body, is "No, this app doesn’t contain high motion" selected?
   - quote: "If the virtual camera in your app doesn’t move without the user moving their head or body, choose “No, this app doesn’t contain high motion.”"
@@ -407,6 +411,7 @@ Retrieved: 2026-10-30
 > Choose “Yes, this app contains high motion” if the combination of forward or backward virtual camera speed and object distance in your app produces a pixel speed similar to or higher than that shown in Example 1.
 
 **Applies to:** visionOS apps whose virtual camera moves without the user moving their head or body
+**Requires:** visionos
 
 - **[PLAT-28]** If forward/backward virtual camera speed and object distance produce a pixel speed similar to or higher than Apple's Example 1, is "Yes, this app contains high motion" selected?
   - quote: "Choose “Yes, this app contains high motion” if the combination of forward or backward virtual camera speed and object distance in your app produces a pixel speed similar to or higher than that shown in Example 1."
@@ -424,6 +429,7 @@ Retrieved: 2026-10-30
 > Choose “Yes, this app contains high motion” if the virtual camera rolls around its longitudinal axis or pitches up or down more than 10 degrees, with less than 5 minutes between each instance. This includes loops, steep banks or slopes, and upside-down motion.
 
 **Applies to:** visionOS apps whose virtual camera moves without the user moving their head or body
+**Requires:** visionos
 
 - **[PLAT-29]** If the virtual camera rolls or pitches more than 10 degrees with less than 5 minutes between instances, is "Yes, this app contains high motion" selected?
   - quote: "Choose “Yes, this app contains high motion” if the virtual camera rolls around its longitudinal axis or pitches up or down more than 10 degrees, with less than 5 minutes between each instance."
@@ -441,6 +447,7 @@ Retrieved: 2026-10-30
 > Choose “Yes, this app contains high motion” if the virtual camera yaws left or right smoothly, while simultaneously moving forward or backward at speeds equal to or slower than running. This includes user-controlled and scripted smooth camera turns in first-person-view experiences.
 
 **Applies to:** visionOS apps whose virtual camera moves without the user moving their head or body
+**Requires:** visionos
 
 - **[PLAT-30]** If the virtual camera yaws smoothly while simultaneously moving forward or backward at speeds equal to or slower than running, is "Yes, this app contains high motion" selected?
   - quote: "Choose “Yes, this app contains high motion” if the virtual camera yaws left or right smoothly, while simultaneously moving forward or backward at speeds equal to or slower than running."
@@ -456,6 +463,7 @@ Retrieved: 2026-10-30
 > Choose “Yes, this app contains high motion” if the virtual camera makes unexpected and/or unpredictable motions with less than 5 minutes between each instance. This includes falls, turns, spins, and other orientation changes.
 
 **Applies to:** visionOS apps whose virtual camera moves without the user moving their head or body
+**Requires:** visionos
 
 - **[PLAT-31]** If the virtual camera makes unexpected and/or unpredictable motions with less than 5 minutes between instances, is "Yes, this app contains high motion" selected?
   - quote: "Choose “Yes, this app contains high motion” if the virtual camera makes unexpected and/or unpredictable motions with less than 5 minutes between each instance."

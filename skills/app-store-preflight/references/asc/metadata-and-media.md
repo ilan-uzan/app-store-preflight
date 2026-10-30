@@ -367,6 +367,7 @@ Navigation path: App Information (sidebar) — “the designated section under t
 > (Footnote) 5 Only visible for apps that offer In-App Purchases.
 
 **Applies to:** Apps that offer In-App Purchases (optional field)
+**Requires:** iap, subscriptions
 
 - **[META-26]** If the server code expects App Store Server Notifications (e.g. an endpoint handling signed notification payloads), is the URL configured in App Information?
   - quote: "you can receive server notifications from the App Store about key events by setting up an optional URL that links to your server"

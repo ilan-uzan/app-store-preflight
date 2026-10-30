@@ -59,6 +59,7 @@ Note: the start URL https://developer.apple.com/help/app-store-connect/manage-in
 > Before you publish your In-App Purchase on the App Store it must be submitted for review. If you’re submitting your first In-App Purchase, you must submit it with a new version of your app. Ensure you aren't missing any required information before submitting. Monitor In-App Purchase statuses to understand if your In-App Purchase is available or if it needs your attention.
 
 **Applies to:** Apps that offer In-App Purchases (any of the four types)
+**Requires:** iap, subscriptions
 
 - **[IAP-01]** Has the Account Holder accepted the Paid Apps Agreement and provided banking and tax information, with the agreement showing Active?
   - quote: "the membership Account Holder must accept the Paid Apps Agreement in the Business section of App Store Connect and provide banking and tax information"
@@ -121,6 +122,7 @@ Note: the start URL https://developer.apple.com/help/app-store-connect/manage-in
 > | Non-Renewing Subscription | A product that allows users to purchase a service with a limited duration. The content of this In-App Purchase can be static. This type of Subscription does not renew automatically. Example: One year subscription to a catalog of archived articles. |
 
 **Applies to:** Apps that offer In-App Purchases
+**Requires:** iap, subscriptions
 
 - **[IAP-10]** Is each product configured in App Store Connect with the type that matches how the app treats it (used once and depleted = Consumable; purchased once and does not expire = Non-Consumable; renews automatically = Auto-Renewable Subscription; limited duration, does not renew = Non-Renewing Subscription)?
   - quote: "A product that is used once, after which it becomes depleted and must be purchased again."
@@ -148,6 +150,7 @@ Note: the start URL https://developer.apple.com/help/app-store-connect/manage-in
 > - Add the reference name and product ID, then click Create.
 
 **Applies to:** Apps that offer consumable or non-consumable In-App Purchases
+**Requires:** iap
 
 - **[IAP-11]** Does each consumable/non-consumable product have a reference name and product ID in App Store Connect?
   - quote: "Add the reference name and product ID, then click Create."
@@ -197,6 +200,7 @@ Field limits (verbatim values from the tables above):
 | Description | "must be no more than 45 characters" |
 
 **Applies to:** All In-App Purchases (General Information); Image applies when promoting an In-App Purchase or setting up win-back offers
+**Requires:** iap, subscriptions
 
 - **[IAP-12]** Is each reference name at most 64 characters?
   - quote: "can be as long as 64 characters"
@@ -293,6 +297,7 @@ Field limits (verbatim values from the tables above):
 > - Add information under Review Notes, then click Save.
 
 **Applies to:** All In-App Purchases being submitted for review; Image applies to promotion, win-back offers, Contingent Pricing, offer codes and payment sheet display
+**Requires:** iap, subscriptions
 
 - **[IAP-24]** If the In-App Purchase is promoted on the product page, used for win-back offers or Contingent Pricing, or used to display offer codes and the payment sheet, does it have an image uploaded (and approved before it appears on the App Store)?
   - quote: "To promote your In-App Purchase on your App Store product page, set up win-back offers or Contingent Pricing, or display your offer codes and payment sheet, you must provide an image."
@@ -358,6 +363,7 @@ Field limits (verbatim values from the tables above):
 > Once all rejected items are resolved or removed, click Resubmit to App Review.
 
 **Applies to:** All In-App Purchases and subscriptions being submitted for review
+**Requires:** iap, subscriptions
 
 - **[IAP-26]** For each IAP type being submitted for the first time (consumable, non-consumable, auto-renewable subscription, non-renewing subscription), is a new app version included in the same submission?
   - quote: "The first consumable, non-consumable, auto-renewable subscription, and non-renewing subscription In-App Purchase of each type must be submitted with a new app version."
@@ -424,6 +430,7 @@ Field limits (verbatim values from the tables above):
 > | Removed from Sale | Apple removed this In-App Purchase from sale. |
 
 **Applies to:** All In-App Purchases
+**Requires:** iap, subscriptions
 
 - **[IAP-34]** Is every product the app sells free of a red status (needing action) in App Store Connect?
   - quote: "A red status indicator means that you need to take action before the product can be made available."
@@ -496,6 +503,7 @@ Field limits (verbatim values from the tables above):
 > In each localization, you can customize subscription group names and app display options. Users will see these names when they manage subscriptions on their devices.
 
 **Applies to:** Apps that offer auto-renewable subscriptions
+**Requires:** subscriptions
 
 - **[IAP-37]** Is every auto-renewable subscription the app sells placed in a subscription group in App Store Connect?
   - quote: "To begin offering a subscription in your app, you will need to create a Subscription Group, then add one or more Subscription products to that group, then assign levels to those products."
@@ -567,6 +575,7 @@ Field limits (verbatim values from the tables above):
 Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months, and 1 year.
 
 **Applies to:** Apps that offer auto-renewable subscriptions
+**Requires:** subscriptions
 
 - **[IAP-45]** Are subscription group display names free of control characters and markup language (HTML tags, emoticons, diacritics, special characters)?
   - quote: "Subscription group display names must not contain control characters (for example, null, new lines, carriage returns, escape, and other invisible characters), or markup language (for example, HTML tags, or Unicode characters, such as emoticons, diacritics, or special characters)."
@@ -615,6 +624,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Note: Your first non-renewing subscription must be submitted with a new app version. After creating your subscription, select Add for Review and include an app version in your submission to have it reviewed together with your app. Once your first non-renewing subscription has been approved, you can submit additional non-renewing subscriptions without a new app version. Learn more about submitting subscriptions for review.
 
 **Applies to:** Apps that offer non-renewing subscriptions
+**Requires:** iap, subscriptions
 
 - **[IAP-49]** Does each non-renewing subscription have a reference name, product ID, price, and localizations?
   - quote: "Enter a Reference Name and Product ID, then click Create."
@@ -660,6 +670,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > App Store Connect allows you to set an introductory offer for each subscription product in App Store Connect. You can have multiple offers in each subscription group. New and returning customers are only eligible to use one introductory offer per subscription group. For example, if a customer uses a free trial and then upgrades to a subscription product in the same group that also has a free trial, they aren't eligible for the second offer.
 
 **Applies to:** Apps that offer introductory offers (free trial, pay up front, pay as you go) on auto-renewable subscriptions
+**Requires:** subscriptions
 
 - **[IAP-51]** If the app displays an introductory offer in its own UI, does it only show the offer to people eligible to redeem it?
   - quote: "When displaying offers in your app, use receipt validation to ensure that you’re only showing offers to people who can redeem them."
@@ -698,6 +709,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Once you create a promotional offer, only the price can be edited. To edit the duration, type, or offer code, you must create a new offer.
 
 **Applies to:** Apps that offer promotional offers on auto-renewable subscriptions
+**Requires:** subscriptions
 
 - **[IAP-54]** If the app uses promotional offers, have In-App Purchase keys been generated?
   - quote: "To get started, generate keys for In-App Purchases"
@@ -756,6 +768,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > - Click the subscription, then go to the Redemption URL section and click Copy Link. Make sure you check customers eligibility before you send out the link. Learn more.
 
 **Applies to:** Apps that offer win-back offers on auto-renewable subscriptions
+**Requires:** subscriptions
 
 - **[IAP-57]** Is each subscription that has (or will have) a win-back offer already approved by App Review?
   - quote: "Your subscription needs to be approved by App Review before you can create a win-back offer."
@@ -821,6 +834,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > - In the confirmation dialog, review the Family Sharing terms, then click Confirm.
 
 **Applies to:** Apps that offer auto-renewable subscriptions or non-consumable In-App Purchases and turn on Family Sharing
+**Requires:** iap, subscriptions
 
 - **[IAP-60]** Is Family Sharing turned on only for auto-renewable subscriptions and non-consumables (not consumables or non-renewing subscriptions)?
   - quote: "Family Sharing is a feature supported only by apps that offer auto-renewable subscriptions and non-consumable In-App Purchases."
@@ -884,6 +898,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > When your app displays Apple In-App Purchases, indicate in your UI whether users can share the product with family. Call isFamilyShareable to determine at runtime whether the Apple In-App Purchase supports Family Sharing. Knowing whether a product is shareable helps users make a selection that best fits their needs.
 
 **Applies to:** Apps with Family Sharing turned on for any In-App Purchase
+**Requires:** iap, subscriptions
 
 - **[IAP-63]** Does the app set up a transaction observer/listener at app launch so it receives transactions that occur outside the app (e.g., Family Sharing purchases)?
   - quote: "Set up a transaction observer at app launch so your app receives transactions that occur outside of your app, such as receiving a Family Sharing purchase."
@@ -934,6 +949,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Inform customers by presenting contextual messaging in the app for any actions you take as a result of the refund.
 
 **Applies to:** Apps with a server that receives App Store Server Notifications for consumable, non-consumable, or non-renewing subscription purchases
+**Requires:** iap, subscriptions
 
 - **[IAP-67]** Does the server's notification endpoint respond with a 200 response code to `REFUND` posts?
   - quote: "Your server must respond to the post with a 200 response code."
@@ -965,6 +981,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > - Use the App Store Server API and enable App Store Server Notifications to get real-time changes to the status of your subscriptions.
 
 **Applies to:** Apps that offer auto-renewable subscriptions
+**Requires:** subscriptions
 
 - **[IAP-69]** Are the subscriptions available across all device types the app supports?
   - quote: "Ensure that the subscriptions are available across all device types that your app supports."
@@ -1050,6 +1067,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Multiple subscription groups aren’t recommended for apps in which people would expect to have a single active subscription. Keep your offerings simple and easy to understand. For each subscription, create a user-friendly, self-explanatory name that differentiates it from others in the group. Use distinct names for the app, the subscription group, and each subscription to avoid confusion.
 
 **Applies to:** Apps that offer auto-renewable subscriptions
+**Requires:** subscriptions
 
 - **[IAP-77]** Does each subscription have a user-friendly, self-explanatory display name that differs from the others in the group, and are app, group, and subscription names distinct?
   - quote: "Use distinct names for the app, the subscription group, and each subscription to avoid confusion."
@@ -1067,6 +1085,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Use App Store Connect to set up separate and equivalent auto-renewable subscriptions for each app included in the multiapp subscription so that people can subscribe from any app. To help people avoid paying multiple times for the same offering, make sure to verify that they’re active subscribers before showing any subscription options. View details on determining if a subscription is active.
 
 **Applies to:** Apps whose subscription grants access to multiple apps
+**Requires:** subscriptions
 
 - **[IAP-78]** Are all apps in the multiapp subscription published under the same developer account?
   - quote: "Each app must be approved to use auto-renewable Apple In-App Purchases and published under the same developer account."
@@ -1097,6 +1116,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Help subscribers share subscriptions. You can use in-app messaging to ask subscribers to confirm their Family Sharing settings, or implement share extensions so they can easily share your app. Within the transaction information, you can look at ownershipType to see if someone is the subscriber or a family member, so you can make sure to display your message to the person who completed the purchase.
 
 **Applies to:** Apps with Family Sharing enabled for an auto-renewable subscription
+**Requires:** subscriptions
 
 - **[IAP-80]** Does the app verify subscription access via purchase validation and grant access to both subscribers and their family members?
   - quote: "Verify subscription access using purchase validation, then provide the proper access to subscribers and their family members."
@@ -1118,6 +1138,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Depending on your subscription setup, existing subscribers may be able to redeem more than one offer if the offers are in different subscription groups. If you intend for someone to subscribe to only one subscription group at a time, make sure the offer is within their current subscription group. Existing subscribers can only redeem codes that are an upgrade from or at the same level as their current subscription.
 
 **Applies to:** Apps that offer subscription offer codes
+**Requires:** subscriptions
 
 - **[IAP-117]** If offer codes are distributed, is the app available on the App Store?
   - quote: "In order for offer codes to be redeemed, your app must be available on the App Store."
@@ -1155,6 +1176,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > If you’d like to display your offer on the App Store, you’ll need an approved subscription image. Aim for a simple graphic that’s different than your app icon or screenshots that conveys the essence of the Apple In-App Purchase included as part of the offer.
 
 **Applies to:** Apps that offer win-back offers
+**Requires:** subscriptions
 
 - **[IAP-121]** For subscriptions with win-back offers, are the subscription display name and description accurate?
   - quote: "Apple uses your subscription display name and description when displaying your win-back offer, so be sure this information is accurate."
@@ -1170,6 +1192,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > When written thoughtfully, notifications can help people stay engaged with your service and keep their subscriptions active. To ensure a positive experience, make sure your notifications are timely, serve a clear purpose, and deliver meaningful information. You can also use push notifications to market your content — for example, promoting a subscription offer to people who haven’t yet subscribed. However, people must first explicitly opt in to receiving marketing push notifications via a method within your app that includes consent language and a clear way of opting out. Carefully consider the frequency, timing, and content of your notifications to ensure they always provide value to subscribers. Push notifications must not include sensitive personal or confidential information.
 
 **Applies to:** Apps that send push notifications about subscriptions or offers
+**Requires:** push
 
 - **[IAP-122]** If the app sends marketing push notifications (e.g. promoting a subscription offer), do people first explicitly opt in within the app via a method with consent language and a clear way of opting out?
   - quote: "people must first explicitly opt in to receiving marketing push notifications via a method within your app that includes consent language and a clear way of opting out"
@@ -1194,6 +1217,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > When a subscription renewal fails, Apple attempts to recover it for 60 days. If you’ve chosen to pause access to your service or content during this time, you’ll need to reinstate access once the issue is resolved. If the subscription renews within 60 days, the days of paid service resume from the renewal date.
 
 **Applies to:** Apps that offer auto-renewable subscriptions
+**Requires:** subscriptions
 
 - **[IAP-81]** Is it easy for people to access the system-provided subscription management UI where they can cancel?
   - quote: "always make it easy for people to access the system-provided management UI where they can cancel if they wish"
@@ -1223,6 +1247,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Apple uses a variety of factors to determine whether a refund request is approved or denied. To help inform and improve the refund process, you can send information about a user’s Apple In‑App Purchase (including auto-renewable subscriptions) to Apple via the Send Consumption Information endpoint in the App Store Server API (for example, if they used the Apple In-App Purchase or you were unable to deliver the purchase). Data is incorporated into our refund logic, to help ensure flexible, accurate, and informed decision making.
 
 **Applies to:** Apps that offer In-App Purchases
+**Requires:** iap, subscriptions
 
 - **[IAP-84]** If the app restricts access or updates balances after a refund, does it inform the user of the change?
   - quote: "If you choose to take action, inform the user of any changes and let them know if there’s anything they need to do."
@@ -1240,6 +1265,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > If someone requests support for an Apple In‑App Purchase, you can use the Look Up Order ID endpoint to make sure you’re taking action on the right purchase. Simply ask the user for the Order ID included on their email receipt from Apple, then use the endpoint to confirm the invoice and any associated information — for example, whether the user has already received a refund for their purchase — or to match the date and time of the purchase with your records.
 
 **Applies to:** Apps that offer restorable In-App Purchases (non-consumables, auto-renewable subscriptions, non-renewing subscriptions)
+**Requires:** iap, subscriptions
 
 - **[IAP-85]** Does the app include a restore mechanism for restorable In-App Purchases?
   - quote: "Your app must also include a restore mechanism for any restorable Apple In‑App Purchases, per App Review Guideline 3.1.1."
@@ -1285,6 +1311,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Use the default confirmation sheet. When someone makes a purchase using Apple In-App Purchase, the system displays a confirmation sheet to help prevent accidental purchases. Don’t modify or replicate this sheet.
 
 **Applies to:** Apps that offer In-App Purchases
+**Requires:** iap, subscriptions
 
 - **[IAP-87]** Does the app display the total billing price for every in-app purchase it offers (consumables and non-consumables included)?
   - quote: "Display the total billing price for each in-app purchase you offer, regardless of type."
@@ -1321,6 +1348,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Aim to customize your in-app messaging so that it makes sense to both purchasers and family members. For example, when a family member views shared content for the first time, you might welcome them with wording like “Your family subscription includes…”.
 
 **Applies to:** Apps with Family Sharing enabled (advisory guidance)
+**Requires:** iap, subscriptions
 
 - **[IAP-91]** If Family Sharing is enabled, is it mentioned where people learn about the content (e.g., product name or sign-up screen)?
   - quote: "Prominently mention Family Sharing in places where people learn about the content you offer."
@@ -1348,6 +1376,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Avoid characterizing or providing guidance on Apple’s refund policies. For example, don’t speculate about whether customers will receive the refund they request. To help people understand the refund-request process, you can provide a link to Request a refund for apps or content that you bought from Apple.
 
 **Applies to:** Apps that present custom purchase-help / refund UI
+**Requires:** iap, subscriptions
 
 - **[IAP-92]** If the app has a purchase-help screen, does its refund action use a simple title (like “Refund” or “Request a Refund”) and enter the system-provided refund flow?
   - quote: "Use a simple title for the refund action, like “Refund” or “Request a Refund”."
@@ -1381,6 +1410,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Encourage a new subscription only when someone isn’t already a subscriber. Otherwise, people may believe their existing subscription has lapsed when that’s not actually the case. If you offer the same subscription options in multiple apps or through your website, provide a sign-in option so people don’t think they have to pay multiple times for the same service.
 
 **Applies to:** Apps that offer auto-renewable subscriptions
+**Requires:** subscriptions
 
 - **[IAP-95]** Does the app avoid prompting existing subscribers to subscribe?
   - quote: "Encourage a new subscription only when someone isn’t already a subscriber."
@@ -1418,6 +1448,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Include a sign-up opportunity in your app’s settings. App and account settings are common places for people to look for a way to subscribe.
 
 **Applies to:** Apps that offer auto-renewable subscriptions
+**Requires:** subscriptions, tvos
 
 - **[IAP-97]** If an introductory price is offered, does the sign-up screen list the introductory price, the offer duration, and the standard price after the offer ends?
   - quote: "be sure to list the introductory price, the duration of the offer, and the standard price the customer pays after the offer ends"
@@ -1462,6 +1493,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Help people benefit from unlocked content as soon as they complete the redemption flow. Think about ways to align the post-redemption experience in your app with the subscriber’s new status. For example, you might provide a welcome experience for new subscribers or a brief tour of new features for an existing subscriber who’s unlocked additional functionality. In particular, be prepared to welcome people who subscribe before they open your app for the first time. For example, if you require people to create an account or sign in before they can use your app, make this process as smooth as possible for new subscribers who haven’t experienced it before.
 
 **Applies to:** Apps that use subscription offer codes
+**Requires:** subscriptions
 
 - **[IAP-101]** Do custom offer codes contain only alphanumeric ASCII characters?
   - quote: "A custom code can contain only alphanumeric ASCII characters."
@@ -1500,6 +1532,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > Always make it easy for customers to cancel an auto-renewable subscription. If the manage subscription action is deep within an app — or hard to recognize — subscribers can feel they’re being discouraged or prevented from canceling.
 
 **Applies to:** Apps that offer auto-renewable subscriptions
+**Requires:** subscriptions
 
 - **[IAP-104]** Is the manage-subscription action easy to find (not deep within the app or hard to recognize)?
   - quote: "If the manage subscription action is deep within an app — or hard to recognize — subscribers can feel they’re being discouraged or prevented from canceling."
@@ -1528,6 +1561,7 @@ Subscription durations (verbatim): 1 week, 1 month, 2 months, 3 months, 6 months
 > - Display a list of options, followed by a button people tap to start the signup process. Using a list to display one option per row gives you a compact design that minimizes scrolling while making subscription choices easy to scan and understand. In this design, the button’s title can update to reflect the chosen option.
 
 **Applies to:** watchOS apps with a subscription sign-up screen
+**Requires:** watchos, subscriptions
 
 - **[IAP-106]** Does the watchOS sign-up screen display the same subscription information shown in other versions of the app (name, duration, content, localized billing amount, sign-in/restore)?
   - quote: "The sign-up screen in your watchOS app needs to display the same set of information about your subscription options that you display in other versions of your app."

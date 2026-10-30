@@ -223,6 +223,7 @@ Notes for the skill: All text below was copied from Apple's pages as fetched on 
 > Note: Even if people didn’t use your app to purchase the subscription, you still need to support account deletion.
 
 **Applies to:** Apps that let people create an account within the app.
+**Requires:** account-creation, login, sign-in-with-apple, third-party-login
 
 - **[TECH-23]** Is the web account-deletion link (when deletion can't happen in-app) easy to discover and not buried in the Privacy Policy or Terms of Service?
   - quote: "Make the link easy to discover — for example, don’t bury it in your Privacy Policy or Terms of Service pages."
@@ -322,6 +323,7 @@ Notes for the skill: All text below was copied from Apple's pages as fetched on 
 > For either token revocation request, the revoke endpoint returns a 200 response code without a response body after the server invalidates the token value, or if the token value was previously invalidated. If the response contains an error, please see ErrorResponse for the specific error code provided in the response body.
 
 **Applies to:** Apps using Sign in with Apple that delete accounts.
+**Requires:** sign-in-with-apple
 
 - **[TECH-27]** Does the revocation call send `client_id`, `client_secret` (JWT signed with the Sign in with Apple private key) and a valid refresh or access `token`, with `client_id` not including the Team ID?
   - quote: "In order to revoke authorization for a user, you must obtain a valid refresh token or access token."
@@ -364,6 +366,7 @@ Notes for the skill: All text below was copied from Apple's pages as fetched on 
 > To indicate when the user disables or permanently deletes their Apple Account, be sure to update your server’s records according to your process.
 
 **Applies to:** Apps and websites using Sign in with Apple.
+**Requires:** sign-in-with-apple
 
 - **[TECH-28]** Does the native app call `getCredentialState(forUserID:completion:)` to respond to account deletion / revocation?
   - quote: "Use getCredentialState(forUserID:completion:) to respond to account deletion events."
@@ -393,6 +396,7 @@ Notes for the skill: All text below was copied from Apple's pages as fetched on 
 > Sign in with Apple makes it easy for people to authenticate with Face ID, Touch ID, or Optic ID and has two-factor authentication built in for an added layer of security. Apple doesn’t use Sign in with Apple to profile people or their activity in apps.
 
 **Applies to:** Apps offering Sign in with Apple.
+**Requires:** sign-in-with-apple
 
 **Status:** Informational — no checks.
 
@@ -418,6 +422,7 @@ Notes for the skill: All text below was copied from Apple's pages as fetched on 
 > Indicate when people are currently signed in. You can help people confirm their sign-in method by displaying a phrase like “Using Sign in with Apple” in places like a settings or account interface.
 
 **Applies to:** Apps offering Sign in with Apple.
+**Requires:** sign-in-with-apple, account-creation, login, third-party-login
 
 - **[TECH-30]** After Sign in with Apple completes, does the app proceed into the account without asking for information that isn't required?
   - quote: "Help people use their new account right away; don’t delay the experience by asking for information that isn’t required."
@@ -454,6 +459,7 @@ Notes for the skill: All text below was copied from Apple's pages as fetched on 
 > Be transparent about the data you collect. People value knowing how you use the data that they share with you. One way you can be transparent is to welcome people by using the name or email address they shared. Doing this helps establish how you use this information and, for a relay address, shows people where to find it in the future. If you don’t display all the data that people provide, they are likely to wonder why you asked for it.
 
 **Applies to:** Apps offering Sign in with Apple.
+**Requires:** sign-in-with-apple
 
 - **[TECH-32]** Does the Sign in with Apple flow avoid asking people to supply or create a password?
   - quote: "Unless people have stopped using Sign in with Apple with your app or website, don’t ask for a password."
@@ -519,6 +525,7 @@ Note: the button titles are shown as images on Apple's page.
 > | 140pt (140px @1x, 280px @2x) | 30pt (30px @1x, 60px @2x) | 1/10 of the button’s height |
 
 **Applies to:** Apps offering Sign in with Apple.
+**Requires:** sign-in-with-apple
 
 - **[TECH-35]** Is the Sign in with Apple button no smaller than other sign-in buttons and visible without scrolling?
   - quote: "Make a Sign in with Apple button no smaller than other sign-in buttons, and avoid making people scroll to see the button."
@@ -605,6 +612,7 @@ Note: the button titles are shown as images on Apple's page.
 > No additional considerations for iOS, iPadOS, macOS, tvOS, visionOS, or watchOS.
 
 **Applies to:** Apps that draw their own Sign in with Apple button instead of the system button.
+**Requires:** sign-in-with-apple
 
 - **[TECH-39]** Does a custom button use only the titles “Sign in with Apple”, “Sign up with Apple”, or “Continue with Apple”?
   - quote: "Titles. Use only Sign in with Apple, Sign up with Apple, or Continue with Apple."
@@ -1114,6 +1122,7 @@ Note: Platforms column lists the introduced-in versions from each key page. Appl
 > [Editor: the page shows image tabs titled Incentive, Imitation request, Alert image, Alert annotation.]
 
 **Applies to:** Apps that perform app tracking / use App Tracking Transparency.
+**Requires:** tracking, ads, analytics
 
 - **[TECH-75]** If the app tracks from launch, is the ATT system alert shown before any tracking data is collected (ad/attribution SDKs not initialized with IDFA collection before authorization)?
   - quote: "If you want to perform app tracking as soon as people launch your app, you must display the system-provided alert before you collect any tracking data."
@@ -1150,6 +1159,7 @@ Note: Platforms column lists the introduced-in versions from each key page. Appl
 > Important: If the system identifies consistent problems with your customized location button, it won’t give your app access to the device location when people tap it. Although such a button can perform other app-specific actions, people may lose trust in your app if your location button doesn’t work as they expect.
 
 **Applies to:** Apps using `LocationButton` / `CLLocationButton`.
+**Requires:** location
 
 - **[TECH-77]** If the app uses a location button, does its text fit without truncation at all accessibility text sizes and in every localization, with no low-contrast/translucency warnings?
   - quote: "button text needs to fit without truncation at all accessibility text sizes and when translated into other languages."
@@ -1248,6 +1258,7 @@ Note: Platforms column lists the introduced-in versions from each key page. Appl
 > Note: If your app requests and receives When In Use authorization, you can make a separate request for Always authorization later. However, apps may make only one request for Always authorization.
 
 **Applies to:** Apps using Core Location on iOS.
+**Requires:** location
 
 - **[TECH-81]** If the app requests Always authorization, does it still work when only When In Use is granted?
   - quote: "You must always be prepared to run with When In Use authorization."
@@ -1301,6 +1312,7 @@ Note: Platforms column lists the introduced-in versions from each key page. Appl
 > - If your app only needs to save video to the photo library, the UISaveVideoAtPathToSavedPhotosAlbum(_:_:_:_:) function is a simpler alternative to PHPhotoLibrary. This function only requires write access to the library. Use the NSPhotoLibraryAddUsageDescription key in your Info.plist file to provide the user a message to request permission to save to the photo library.
 
 **Applies to:** Apps that capture from the camera or microphone, or save captured media to the photo library.
+**Requires:** camera-mic-photos
 
 - **[TECH-122]** For macOS targets that use the camera or microphone, are the Camera and Audio Input entitlements enabled (in addition to the Info.plist keys)?
   - quote: "Your app needs to contain the appropriate key in its Info.plist file, and the appropriate entitlement enabled in macOS, before it requests authorization or attempts to use a capture device. Otherwise, the system terminates your app."
@@ -1608,6 +1620,7 @@ Note: Xcode name: Required background modes; type: array of strings. Possible va
 > | Push to Talk | push-to-talk | The app launches in response to a push notification and plays audible content in the background. For more information, see the Push to Talk framework. | iOS, iPadOS |
 
 **Applies to:** Apps whose Info.plist contains UIBackgroundModes.
+**Requires:** background-modes
 
 - **[TECH-90]** Is every declared UIBackgroundModes value backed by code that uses that service (per the table's description)?
   - quote: "Use background execution modes sparingly because overuse can negatively impact device performance and battery life."

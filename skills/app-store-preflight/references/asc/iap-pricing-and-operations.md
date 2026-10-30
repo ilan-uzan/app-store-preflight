@@ -71,6 +71,7 @@ Retrieved: 2026-10-30
 > New pricing will go into effect immediately.
 
 **Applies to:** Apps that offer In-App Purchases (including non-renewing subscriptions, which are managed under Subscriptions > Non-Renewing Subscriptions)
+**Requires:** iap, subscriptions
 
 ## IAPX.3 Schedule price changes for In-App Purchases
 
@@ -162,6 +163,7 @@ Retrieved: 2026-10-30
 > - You can delete scheduled price changes by hovering over the red delete button (-). In certain cases, such as upcoming tax or foreign exchange rate adjustments, or when a manually adjusted price is starting or reverting, you may not be able to remove an upcoming price change. Click the date of the price change for details.
 
 **Applies to:** Apps that offer In-App Purchases (including non-renewing subscriptions, which are managed under Subscriptions > Non-Renewing Subscriptions)
+**Requires:** iap, subscriptions
 
 ## IAPX.4 Set availability for In-App Purchases
 
@@ -186,6 +188,7 @@ Retrieved: 2026-10-30
 > Keep in mind that even if you set availability for an In-App Purchase, it may not be available for purchase. Monitor the In-App Purchase statuses to understand if action is needed from you, such as completing missing metadata, or if your In-App Purchase has been approved by App Review.
 
 **Applies to:** Apps that offer In-App Purchases (including non-renewing subscriptions, which are managed under Subscriptions > Non-Renewing Subscriptions)
+**Requires:** iap, subscriptions
 
 - **[IAPX-02]** For each In-App Purchase whose availability has been set, does its In-App Purchase status show no action needed from the developer (such as completing missing metadata)?
   - quote: "Monitor the In-App Purchase statuses to understand if action is needed from you, such as completing missing metadata"
@@ -220,6 +223,7 @@ Retrieved: 2026-10-30
 > - Notify Apple of your intention to remove an In-App Purchase from sale. Apple reserves the right to offer refunds for unfulfilled In-App Purchases.
 
 **Applies to:** Apps deselecting countries or regions for, or removing from sale, an In-App Purchase
+**Requires:** iap, subscriptions
 
 - **[IAPX-04]** If an In-App Purchase is being removed from sale, was the removal announced and was in-app merchandising of it stopped at least 31 days before removal?
   - quote: "Announce your intention to remove the In-App Purchase from sale and stop merchandising it within your app at least 31 days before removal"
@@ -264,6 +268,7 @@ Retrieved: 2026-10-30
 > - Make sure your subscription’s starting price is correct and click Confirm.
 
 **Applies to:** Apps that offer auto-renewable subscriptions
+**Requires:** subscriptions
 
 ## IAPX.7 Decrease the price of an auto-renewable subscription
 
@@ -287,6 +292,7 @@ Retrieved: 2026-10-30
 > - Once a price decrease goes into effect, it can’t be reversed. However, you can schedule a price increase later.
 
 **Applies to:** Apps that offer auto-renewable subscriptions
+**Requires:** subscriptions
 
 ## IAPX.8 Increase the price of an auto-renewable subscription (consent and notice rules)
 
@@ -352,6 +358,7 @@ Retrieved: 2026-10-30
 > Once a price increase goes into effect, it can’t be reversed.
 
 **Applies to:** Apps that increase the price of an auto-renewable subscription
+**Requires:** subscriptions
 
 - **[IAPX-07]** If a scheduled price increase applies to existing subscribers, has the developer reviewed, per country or region, whether subscribers will need to consent or will only be notified?
   - quote: "you're responsible for ensuring you understand when consent will be required."
@@ -376,6 +383,7 @@ Retrieved: 2026-10-30
 > - Click Confirm. Any changes you make can’t be reversed.
 
 **Applies to:** Apps that offer auto-renewable subscriptions
+**Requires:** subscriptions
 
 ## IAPX.10 View or modify your planned price changes
 
@@ -398,6 +406,7 @@ Retrieved: 2026-10-30
 > Click the date to view the set or planned price. If you’ve previously preserved pricing for existing subscribers, the current prices paid by these subscribers and the start date of the prices will also appear.
 
 **Applies to:** Apps that offer auto-renewable subscriptions
+**Requires:** subscriptions
 
 ## IAPX.11 Auto-renewable subscription pricing FAQs (foreign exchange, tax, multiseat)
 
@@ -415,6 +424,7 @@ Retrieved: 2026-10-30
 > Changes to your pricing tiers only count as a price increase if they increase what the purchaser pays. If you add, remove, merge, or adjust tiers and the group purchaser's total price stays the same or decreases, Apple notifies them of the change but doesn't request consent, including in countries or regions that require consent for any price increase. Group purchasers who add seats while an increase is scheduled buy those seats at the new price and see their new total before purchasing. If the increase requires consent, completing that purchase counts as consent.
 
 **Applies to:** Apps that offer auto-renewable subscriptions
+**Requires:** subscriptions
 
 ## IAPX.12 Auto-renewable subscription price increase thresholds
 
@@ -604,6 +614,7 @@ Retrieved: 2026-10-30
 > | ZWE | Zimbabwe | USD | 6 | 60 |
 
 **Applies to:** Apps that increase the price of an auto-renewable subscription
+**Requires:** subscriptions
 
 ## IAPX.13 Set availability for an auto-renewable subscription
 
@@ -645,6 +656,7 @@ Retrieved: 2026-10-30
 > - On the top right, click Save.
 
 **Applies to:** Apps that offer auto-renewable subscriptions
+**Requires:** subscriptions
 
 - **[IAPX-08]** For each auto-renewable subscription whose availability has been set, does its In-App Purchase status show no action needed (such as completing missing metadata)?
   - quote: "Keep in mind that even if you set availability for a subscription, it may not be available for purchase. Monitor the In-App Purchase statuses to understand if action is needed from you, such as completing missing metadata"
@@ -742,6 +754,7 @@ Retrieved: 2026-10-30
 > - You can remove this monthly billing option in App Store Connect at any time. In the Availability section under Monthly with 12 Month Commitment, click Remove Monthly Billing. Confirm you want to remove the option and click Confirm. Existing customers won't renew at the end of their 12 month commitment, and new customers won't be able to subscribe to that payment option.
 
 **Applies to:** Apps offering the Monthly with 12-Month Commitment billing option (storefronts outside the United States and Singapore)
+**Requires:** subscriptions
 
 - **[IAPX-14]** If the app offers monthly subscriptions with a 12-month commitment, is it built with an SDK version of 26.5 or later?
   - quote: "apps built with an SDK version of 26.5 or later"
@@ -791,6 +804,7 @@ Retrieved: 2026-10-30
 > | Available for Purchase From | Where an auto-renewable subscription is available for multiseat purchase. Options are the App Store, Apple Business, and Apple School Manager. Learn how to set purchase options for an auto-renewable subscription. |
 
 **Applies to:** Apps that offer In-App Purchases or auto-renewable subscriptions
+**Requires:** iap, subscriptions
 
 - **[IAPX-31]** If the app presents promotional offers for auto-renewable subscriptions, has a subscription (In-App Purchase) key been generated in Users and Access to validate the offers?
   - quote: "You must generate a subscription key in Users and Access to validate your offers."
@@ -876,6 +890,7 @@ Retrieved: 2026-10-30
 > Once you turn off Billing Grace Period, subscribers whose renewal fails due to a billing issue won’t accumulate days of paid service until Apple is able to collect payment and renew the subscription. Ensure that your app continues to provide service for subscriptions that are already in Billing Grace Period.
 
 **Applies to:** Apps with auto-renewable subscriptions that turn on (or turn off) Billing Grace Period
+**Requires:** subscriptions
 
 - **[IAPX-17]** If Billing Grace Period is turned on, does the app (and server) validate purchases and check the subscriber's renewal status so subscribers in a grace period keep access?
   - quote: "Your app still needs to perform purchase validation and account for the subscriber’s renewal status to identify if a subscription is in a Billing Grace Period."
@@ -1056,6 +1071,7 @@ Retrieved: 2026-10-30
 > - Enter the desired URL and click Save.
 
 **Applies to:** Apps whose server receives App Store Server Notifications
+**Requires:** iap, subscriptions
 
 - **[IAPX-32]** If the app's server relies on App Store Server Notifications, is a server URL entered in App Store Connect?
   - quote: "In order to receive these notifications from the App Store, you must provide a URL in App Store Connect that links to your server."
@@ -1116,6 +1132,7 @@ Retrieved: 2026-10-30
 > Keep in mind that if an app isn't ready for sale or the In-App Purchase is pending approval, it may not be available on your App Store product page even when it's available for App Store Promotion. Allow up to 24 hours for changes to reflect on your App Store product page.
 
 **Applies to:** Apps that promote In-App Purchases on their App Store product page (iOS)
+**Requires:** iap, subscriptions
 
 - **[IAPX-26]** If In-App Purchases are promoted, does the app support the PurchaseIntent API?
   - quote: "Your app must support the PurchaseIntent API in order for the App Store to display your promoted product pages."
@@ -1146,6 +1163,7 @@ Retrieved: 2026-10-30
 > | Rejected | Your localization has been rejected. |
 
 **Applies to:** Apps with localized In-App Purchase metadata
+**Requires:** iap, subscriptions
 
 ## IAPX.23 Create offer codes for In-App Purchases
 
@@ -1284,6 +1302,7 @@ Retrieved: 2026-10-30
 > The codes will expire immediately. Subscribers who have already redeemed the codes won’t be affected. Unredeemed codes will also expire and will not be reapplied to the quarterly limit.
 
 **Applies to:** Apps that create offer codes for In-App Purchases
+**Requires:** iap, subscriptions
 
 - **[IAPX-29]** If customers are told they can redeem In-App Purchase offer codes within the app, does the app support the appropriate StoreKit method, available on iOS 16.3, macOS 15.0, or visionOS 1.0 or later?
   - quote: "Redemption within your app for one-time-use and custom codes requires customers to use a device running iOS 16.3, macOS 15.0, or visionOS 1.0 or later, and your app must support the appropriate StoreKit method."
@@ -1460,6 +1479,7 @@ Retrieved: 2026-10-30
 > You can view your deactivated offers anytime, as well as download expired codes associated with deactivated offers.
 
 **Applies to:** Apps that set up offer codes for auto-renewable subscriptions
+**Requires:** subscriptions
 
 ## IAPX.25 Overview of testing in sandbox
 
@@ -1483,6 +1503,7 @@ Retrieved: 2026-10-30
 > Alternatively, you can test In-App Purchases with StoreKit Testing in Xcode, a local test environment that doesn’t require a connection to App Store servers to test In-App Purchases. Use StoreKit Testing in Xcode to test In-App Purchases before you configure them in App Store Connect or to test your code when a network connection isn’t available. Learn how to test In-App Purchases with Xcode and sandbox.
 
 **Applies to:** Apps that offer In-App Purchases or Apple Pay
+**Requires:** iap, subscriptions, apple-pay
 
 ## IAPX.26 Create a Sandbox Apple Account
 
@@ -1534,6 +1555,7 @@ Retrieved: 2026-10-30
 > If you delete a sandbox tester, the associated Sandbox account and email can no longer be used as an App Store Connect user, to test in the sandbox environment, or to make purchases on the iTunes Store or App Store.
 
 **Applies to:** Apps that offer In-App Purchases or Apple Pay
+**Requires:** iap, subscriptions, apple-pay
 
 ## IAPX.27 Manage Sandbox Apple Account settings
 
@@ -1671,6 +1693,7 @@ Retrieved: 2026-10-30
 > - Click Delete in the dialog that appears.
 
 **Applies to:** Apps that offer In-App Purchases or Apple Pay
+**Requires:** iap, subscriptions, apple-pay
 
 ## Sources
 

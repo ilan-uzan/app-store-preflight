@@ -390,6 +390,7 @@ Retrieved: 2026-10-30
 > Use Location Services in your app only when it is directly relevant to the features and services provided by the app. Location-based APIs shouldn’t be used to provide emergency services or autonomous control over vehicles, aircraft, and other devices, except for small devices such as lightweight drones and toys, or remote control car alarm systems, etc. Ensure that you notify and obtain consent before collecting, transmitting, or using location data. If your app uses Location Services, be sure to explain the purpose in your app; refer to the Human Interface Guidelines for best practices for doing so.
 
 **Applies to:** Apps that use Location Services
+**Requires:** location
 
 **Related:** Human Interface Guidelines
 
@@ -554,6 +555,7 @@ Retrieved: 2026-10-30
 > Gaming, gambling, and lotteries can be tricky to manage and tend to be one of the most regulated offerings on the App Store. Only include this functionality if you’ve fully vetted your legal obligations everywhere you make your app available and are prepared for extra time during the review process. Some things to keep in mind:
 
 **Applies to:** Apps with gaming, gambling, or lottery functionality
+**Requires:** gambling-contests, game
 
 - **[5.3-01]** If the app includes gaming, gambling, or lottery functionality, has the developer fully vetted legal obligations everywhere the app is available?
   - quote: "Only include this functionality if you’ve fully vetted your legal obligations everywhere you make your app available and are prepared for extra time during the review process."
@@ -567,6 +569,7 @@ Retrieved: 2026-10-30
 > Sweepstakes and contests must be sponsored by the developer of the app.
 
 **Applies to:** Apps offering sweepstakes or contests
+**Requires:** gambling-contests
 
 - **[5.3.1-01]** Are all sweepstakes and contests in the app sponsored by the app's developer?
   - quote: "Sweepstakes and contests must be sponsored by the developer of the app."
@@ -580,6 +583,7 @@ Retrieved: 2026-10-30
 > Official rules for sweepstakes, contests, and raffles must be presented in the app and make clear that Apple is not a sponsor or involved in the activity in any manner.
 
 **Applies to:** Apps offering sweepstakes, contests, or raffles
+**Requires:** gambling-contests
 
 - **[5.3.2-01]** Are official rules for sweepstakes, contests, and raffles presented in the app?
   - quote: "Official rules for sweepstakes, contests, and raffles must be presented in the app"
@@ -598,6 +602,7 @@ Retrieved: 2026-10-30
 > Apps may not use in-app purchase to purchase credit or currency for use in conjunction with real money gaming of any kind.
 
 **Applies to:** Apps with real money gaming
+**Requires:** gambling-contests, game
 
 - **[5.3.3-01]** Is in-app purchase never used to buy credit or currency used with real money gaming?
   - quote: "Apps may not use in-app purchase to purchase credit or currency for use in conjunction with real money gaming of any kind."
@@ -644,6 +649,7 @@ Retrieved: 2026-10-30
 > Apps offering VPN services must utilize the NEVPNManager API and may only be offered by developers enrolled as an organization. You must make a clear declaration of what user data will be collected and how it will be used on an app screen prior to any user action to purchase or otherwise use the service. Apps offering VPN services may not sell, use, or disclose to third parties any data for any purpose, and must commit to this in their privacy policy. VPN apps must not violate local laws, and if you choose to make your VPN app available in a territory that requires a VPN license, you must provide your license information in the App Review Notes field. Parental control, content blocking, and security apps, among others, from approved providers may also use the NEVPNManager API. Apps that do not comply with this guideline will be removed from the App Store and blocked from installing via alternative distribution and you may be removed from the Apple Developer Program.
 
 **Applies to:** Apps offering VPN services (and parental control, content blocking, and security apps using the NEVPNManager API)
+**Requires:** vpn
 
 **Related:** NEVPNManager API
 

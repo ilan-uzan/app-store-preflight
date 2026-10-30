@@ -174,6 +174,7 @@ Note: Apple page "Last Updated: October 16, 2026". Source text below is copied v
 > 2.3.2 If your app includes in-app purchases, make sure your app description, screenshots, and previews clearly indicate whether any featured items, levels, subscriptions, etc. require additional purchases. If you decide to promote in-app purchases on the App Store, ensure that the in-app purchase Display Name, Screenshot and Description are appropriate for a public audience, that you follow the guidance found in Promoting Your In-App Purchases, and that your app properly handles the SKPaymentTransactionObserver method so that customers can seamlessly complete the purchase when your app launches.
 
 **Applies to:** Apps that include in-app purchases; promotion items apply to apps that promote in-app purchases on the App Store
+**Requires:** iap, subscriptions
 
 **Related:** Promoting Your In-App Purchases
 
@@ -496,6 +497,7 @@ Note: Apple page "Last Updated: October 16, 2026". Source text below is copied v
 > 2.4.3 People should be able to use your Apple TV app without the need for hardware inputs beyond the Siri remote or third-party game controllers, but feel free to provide enhanced functionality when other peripherals are connected. If you require a game controller, make sure you clearly explain that in your metadata so customers know they need additional equipment to play.
 
 **Applies to:** Apple TV (tvOS) apps
+**Requires:** tvos
 
 - **[2.4.3-01]** Can the Apple TV app be used with only the Siri Remote or third-party game controllers?
   - quote: "People should be able to use your Apple TV app without the need for hardware inputs beyond the Siri remote or third-party game controllers"
@@ -541,6 +543,7 @@ Note: Apple page "Last Updated: October 16, 2026". Source text below is copied v
 > - (ix) Apps must contain all language and localization support in a single app bundle.
 
 **Applies to:** Apps distributed via the Mac App Store
+**Requires:** macos
 
 **Related:** macOS File System Documentation
 
@@ -696,6 +699,7 @@ Note: Apple page "Last Updated: October 16, 2026". Source text below is copied v
 > 2.5.4 Multitasking apps may only use background services for their intended purposes: VoIP, audio playback, location, task completion, local notifications, etc.
 
 **Applies to:** Apps using background services
+**Requires:** background-modes, location, callkit, push
 
 - **[2.5.4-01]** Is each declared background mode used only for its intended purpose?
   - quote: "Multitasking apps may only use background services for their intended purposes: VoIP, audio playback, location, task completion, local notifications, etc."
@@ -813,6 +817,7 @@ Note: Apple page "Last Updated: October 16, 2026". Source text below is copied v
 > 2.5.12 Apps using CallKit or including an SMS Fraud Extension should only block phone numbers that are confirmed spam. Apps that include call-, SMS-, and MMS- blocking functionality or spam identification must clearly identify these features in their marketing text and explain the criteria for their blocked and spam lists. You may not use the data accessed via these tools for any purpose not directly related to operating or improving your app or extension (for example, you may not use, share, or sell it for tracking purposes, create user profiles, etc.).
 
 **Applies to:** Apps using CallKit or including an SMS Fraud Extension; apps with call/SMS/MMS blocking or spam identification
+**Requires:** callkit, extensions-widgets
 
 - **[2.5.12-01]** Does the app only block phone numbers that are confirmed spam?
   - quote: "should only block phone numbers that are confirmed spam"
@@ -909,6 +914,7 @@ Note: Apple page "Last Updated: October 16, 2026". Source text below is copied v
 > 2.5.17 Apps that support Matter must use Apple’s support framework for Matter to initiate pairing. In addition, if you choose to use any Matter software component in your app other than the Matter SDK provided by Apple, the software component must be certified by the Connectivity Standards Alliance for the platform it runs on.
 
 **Applies to:** Apps that support Matter
+**Requires:** matter
 
 - **[2.5.17-01]** Does the app use Apple’s support framework for Matter to initiate pairing?
   - quote: "Apps that support Matter must use Apple’s support framework for Matter to initiate pairing."
@@ -927,6 +933,7 @@ Note: Apple page "Last Updated: October 16, 2026". Source text below is copied v
 > 2.5.18 Display advertising should be limited to your main app binary, and should not be included in extensions, App Clips, widgets, notifications, keyboards, watchOS apps, etc. Ads displayed in an app must be appropriate for the app’s age rating, allow the user to see all information used to target them for that ad (without requiring the user to leave the app), and may not engage in targeted or behavioral advertising based on sensitive user data such as health/medical data (such as from the HealthKit APIs), school and classroom data (such as from ClassKit), or from kids (such as from apps in the App Store’s Kids Category), etc. Interstitial ads or ads that interrupt or block the user experience must clearly indicate that they are an ad, must not manipulate or trick users into tapping into them, and must provide easily accessible and visible close/skip buttons large enough for people to easily dismiss the ad. Apps that contain ads must also include the ability for users to report any inappropriate or age-inappropriate ads.
 
 **Applies to:** Apps that display advertising
+**Requires:** ads
 
 - **[2.5.18-01]** Is display advertising limited to the main app binary (none in extensions, App Clips, widgets, notifications, keyboards, watchOS apps, etc.)?
   - quote: "Display advertising should be limited to your main app binary, and should not be included in extensions, App Clips, widgets, notifications, keyboards, watchOS apps, etc."

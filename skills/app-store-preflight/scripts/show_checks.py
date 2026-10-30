@@ -4,6 +4,7 @@
 Usage: python3 -I show_checks.py <checks.json> <ID> [<ID> ...]
        python3 -I show_checks.py <checks.json> --surface asc [--file asc/metadata-and-media.md --file guidelines/ ...]
        python3 -I show_checks.py <checks.json> --batch <N>     (the Nth audit batch in checks.json)
+       python3 -I show_checks.py <checks.json> --plan <plan.json> --batch <N> | --asc-group <name> | --runtime
 (--file matches a path prefix and may repeat)
 """
 import json
@@ -17,7 +18,20 @@ def main():
     with open(sys.argv[1], encoding="utf-8") as f:
         checks = json.load(f)["checks"]
     args = sys.argv[2:]
-    if args[0] == "--batch":
+    if args[0] == "--plan":
+        with open(args[1], encoding="utf-8") as f:
+            plan = json.load(f)
+        rest = args[2:]
+        if rest[0] == "--batch":
+            args = plan["batches"][int(rest[1])]["checkIds"]
+        elif rest[0] == "--asc-group":
+            args = plan["asc"][rest[1]]
+        elif rest[0] == "--runtime":
+            args = plan["runtime"]
+        if not args:
+            print("(no checks)")
+            return
+    elif args[0] == "--batch":
         with open(sys.argv[1], encoding="utf-8") as f:
             wanted_ids = json.load(f)["batches"][int(args[1])]["checkIds"]
         args = wanted_ids

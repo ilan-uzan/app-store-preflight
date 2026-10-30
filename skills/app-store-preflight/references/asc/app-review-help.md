@@ -131,6 +131,7 @@ Retrieved: 2026-10-30
 > - If your app requires an authentication code in addition to or instead of login credentials, include it in the Notes field in advance. Without it, a call may be required to continue the review. Calls are typically completed within three to five business days.
 
 **Applies to:** Apps with account-based features (individual items apply to apps with multiple account types, auto-renewable subscriptions, or authentication codes)
+**Requires:** login, account-creation, sign-in-with-apple, third-party-login
 
 - **[HELP-11]** Do the demo credentials work at the time of submission?
   - quote: "Enter a username and password that work at the time of submission."
@@ -354,6 +355,7 @@ Retrieved: 2026-10-30
 > Related Overview of testing in sandbox Testing In-App Purchases with sandbox Provide information for a complete review Test your app on compatible devices
 
 **Applies to:** Apps that offer In-App Purchases
+**Requires:** iap, subscriptions
 
 - **[HELP-33]** Has the Account Holder accepted the Paid Apps Agreement, and is it in effect?
   - quote: "The Account Holder must accept the Paid Apps Agreement in the Business section of App Store Connect, then confirm the agreement is in effect."
@@ -1253,6 +1255,7 @@ Retrieved: 2026-10-30
 > Deleting an account removes the account from the developer's records, along with any data associated with the account that the developer isn't legally required to maintain. Providing this capability gives people more control of the personal data they've shared. If you're updating an app or submitting a new app with account creation, read the guidance below for a smoother submission process.
 
 **Applies to:** Apps that support account creation
+**Requires:** account-creation, login, sign-in-with-apple, third-party-login
 
 - **[HELP-93]** If the app supports account creation, can people start deleting their account from within the app?
   - quote: "Apps submitted to the App Store that support account creation must also let people initiate deletion of their account within the app."
@@ -1275,6 +1278,7 @@ Retrieved: 2026-10-30
 > Note: Follow applicable legal requirements for storing and retaining user account information and for handling account deletion. This includes complying with local laws where your app is available. If you have questions regarding your legal obligations, check with your legal counsel.
 
 **Applies to:** Apps that support account creation
+**Requires:** account-creation, login, sign-in-with-apple, third-party-login
 
 - **[HELP-94]** Is the account deletion option easy to find in the app (typically in account settings)?
   - quote: "Make the account deletion option easy to find in your app."

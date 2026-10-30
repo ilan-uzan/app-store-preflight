@@ -304,6 +304,7 @@ Scope note: every unit below is copied from the Apple page named in its heading.
 > The Apple Push Notification service (APNs) will be updated with a new server certificate in sandbox on January 20, 2025. Update your application’s Trust Store to include the new server certificate: SHA-2 Root : USERTrust RSA Certification Authority certificate.
 
 **Applies to:** Apps that send push notifications via APNs
+**Requires:** push
 
 - **[SUBMIT-24]** Does the push provider's Trust Store include the SHA-2 Root : USERTrust RSA Certification Authority certificate?
   - quote: "Update your application’s Trust Store to include the new server certificate: SHA-2 Root : USERTrust RSA Certification Authority certificate."
@@ -319,6 +320,7 @@ Scope note: every unit below is copied from the Apple page named in its heading.
 > macOS apps distributed on TestFlight and the App Store shouldn’t include the quarantine extended file attribute com.apple.quarantine. Starting February 18, you must remove this attribute from all files within macOS apps in order to upload to App Store Connect.
 
 **Applies to:** macOS apps distributed on TestFlight and the App Store
+**Requires:** macos, ipad
 
 - **[SUBMIT-25]** Is the com.apple.quarantine extended attribute absent from every file in the macOS app bundle?
   - quote: "you must remove this attribute from all files within macOS apps in order to upload to App Store Connect"
@@ -402,6 +404,7 @@ Scope note: every unit below is copied from the Apple page named in its heading.
 > If you notarize Mac software with the Apple notary service using the altool command-line utility or Xcode 13 or earlier, you’ll need to transition to the notarytool command-utility or upgrade to Xcode 14 or later. Starting November 1, 2023, the Apple notary service will no longer accept uploads from altool or Xcode 13 or earlier. Existing notarized software will continue to function properly.
 
 **Applies to:** Mac software notarized with the Apple notary service
+**Requires:** macos, ipad
 
 - **[SUBMIT-30]** Does any notarization script use notarytool (or Xcode 14+) rather than altool?
   - quote: "the Apple notary service will no longer accept uploads from altool or Xcode 13 or earlier"

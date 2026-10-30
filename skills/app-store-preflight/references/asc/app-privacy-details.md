@@ -440,6 +440,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > Data collected via web traffic must be declared, unless you are enabling the user to navigate the open web.
 
 **Applies to:** Apps with web views
+**Requires:** webview
 
 - **[LABEL-38]** Is data collected through the app's web views (other than open-web browsing) declared on the label?
   - quote: "Data collected via web traffic must be declared, unless you are enabling the user to navigate the open web."
@@ -470,6 +471,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > Declare emails or text messages on your label. Text messages refer to both SMS and non-SMS messages.
 
 **Applies to:** Apps with in-app private messaging between users
+**Requires:** chat-social
 
 - **[LABEL-40]** If the app offers private messaging between users, is "Emails or Text Messages" declared?
   - quote: "Declare emails or text messages on your label. Text messages refer to both SMS and non-SMS messages."
@@ -485,6 +487,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > Declare Gameplay Content on your label.
 
 **Applies to:** Apps with game saves, multiplayer matching, or gameplay logic
+**Requires:** game
 
 - **[LABEL-41]** If the app includes game saves, multiplayer matching, or gameplay logic, is Gameplay Content declared?
   - quote: "Declare Gameplay Content on your label."
@@ -545,6 +548,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > Disclose that you collect Coarse Location, since the precise location data is immediately coarsened and precise location is not stored.
 
 **Applies to:** Apps that coarsen precise location before storing
+**Requires:** location
 
 - **[LABEL-45]** If precise location is immediately coarsened and precise location is not stored, is Coarse Location (rather than nothing) declared?
   - quote: "Disclose that you collect Coarse Location, since the precise location data is immediately coarsened and precise location is not stored."
@@ -597,6 +601,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > “[App] indicates you allowed it to use your data for advertising purposes in its legal prompt. Would you like your Apple device to provide [App] access to the advertising ID or otherwise allow it to use other means for the data processing described above?”
 
 **Applies to:** Apps that show a government-required consent prompt (e.g., via a CMP) before the ATT prompt and reference it in the purpose string
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-49]** If the ATT purpose string references a prior legal consent prompt, does it clearly explain the user's choice (as in Apple's example)?
   - quote: "Here’s an example of a purpose string that clearly explains the user’s choice"
@@ -794,6 +799,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > - When the data broker is a consumer reporting agency and the data is shared with them for purposes of (1) reporting on a consumer's creditworthiness, or (2) obtaining information on a consumer's creditworthiness for the specific purpose of making a credit determination.
 
 **Applies to:** Apps on iOS 14.5, iPadOS 14.5, and tvOS 14.5 or later that track users or access the advertising identifier
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-62]** If the app (or any SDK in it) tracks users or reads the advertising identifier, does it request permission through the ATT framework?
   - quote: "you need to receive the user’s permission through the App Tracking Transparency (ATT) framework in order to track them or access their device’s advertising identifier."
@@ -863,6 +869,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > - Tracking Usage Description
 
 **Applies to:** Apps that request ATT and are distributed in the European Union
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-69]** If the app is distributed in Germany, France, Italy, Poland, or Romania, has the ATT flow been tested with the alternative (full-page) prompt that is the only version available there?
   - quote: "Due to legal requirements, only the alternative version of the system prompt is available for apps distributed in Germany, France, Italy, Poland, and Romania."
@@ -885,6 +892,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > No, per the App Review Guidelines: 5.1.2(i).
 
 **Applies to:** Apps that request ATT
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-71]** Does the app keep all functionality available, and offer no incentive, regardless of the ATT answer?
   - quote: "No, per the App Review Guidelines: 5.1.2(i)."
@@ -900,6 +908,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > Yes, so long as you are transparent to users about your use of the data in your explanation. Per the App Review Guidelines: 5.1.1 (iv), apps must respect the user's permission settings and not attempt to manipulate, trick, or force people to consent to unnecessary data access.
 
 **Applies to:** Apps that show a pre-prompt screen before ATT
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-72]** If the app shows an explanation screen before the ATT prompt, is it transparent about the data use and free of manipulation, tricks, or force?
   - quote: "apps must respect the user's permission settings and not attempt to manipulate, trick, or force people to consent to unnecessary data access."
@@ -915,6 +924,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > No. You will need to receive the user's permission through the App Tracking Transparency framework to track that user.
 
 **Applies to:** Apps that send hashed emails/phone numbers or other IDs to ad/attribution services
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-73]** Without ATT authorization, does the app avoid sending hashed emails, hashed phone numbers, or other identifiers to ad/attribution services for tracking?
   - quote: "You will need to receive the user's permission through the App Tracking Transparency framework to track that user."
@@ -930,6 +940,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > Developers must get permission via the App Tracking Transparency prompt for data that's collected in the app and used for tracking. Data collected separately, outside of the app and not related to the app, is not in scope.
 
 **Applies to:** Apps whose developer also collects tracking consent outside the app
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-74]** Is in-app data used for tracking only when ATT permission was granted, regardless of consent the user gave elsewhere (e.g., on a website)?
   - quote: "Developers must get permission via the App Tracking Transparency prompt for data that's collected in the app and used for tracking."
@@ -1005,6 +1016,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > Yes. Developers are responsible for all code included in their app, including single sign-on (SSO) functionality provided by third parties. If the user will be subject to tracking as a result of SSO functionality included in your app, you must use the App Tracking Transparency prompt to obtain permission from that user first.
 
 **Applies to:** Apps with third-party single sign-on
+**Requires:** third-party-login
 
 - **[LABEL-79]** If a third-party SSO SDK subjects users to tracking, is ATT permission obtained before that SSO tracking occurs?
   - quote: "If the user will be subject to tracking as a result of SSO functionality included in your app, you must use the App Tracking Transparency prompt to obtain permission from that user first."
@@ -1050,6 +1062,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > Yes. If you are using a webview for app functionality, it should be treated the same way as native functionality in your app, unless you are enabling the user to navigate the open web.
 
 **Applies to:** Apps with web views used for app functionality
+**Requires:** webview
 
 - **[LABEL-82]** Is tracking inside app-functionality web views (ad pixels, third-party trackers on the developer's pages) subject to ATT permission like native code?
   - quote: "If you are using a webview for app functionality, it should be treated the same way as native functionality in your app, unless you are enabling the user to navigate the open web."
@@ -1065,6 +1078,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > To access the value of the IDFA for users on iOS/iPadOS version 14.5 or later, you will first need to receive permission from the user through the App Tracking Transparency prompt. For additional guidance on tracking, please refer to App Review Guidelines: 5.1.1 (iv).
 
 **Applies to:** Apps that read the IDFA
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-83]** Is the IDFA read only after ATT permission is granted on iOS/iPadOS 14.5 or later?
   - quote: "To access the value of the IDFA for users on iOS/iPadOS version 14.5 or later, you will first need to receive permission from the user through the App Tracking Transparency prompt."
@@ -1083,6 +1097,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > - Be clear about what the choice is. If the user has not granted ATT permission, and there is no additional data use beyond the scope of ATT, be clear that no further action is required. If the user has granted ATT permission, it should be clear what impact the separate control will have on their ATT choice.
 
 **Applies to:** Apps offering privacy controls separate from ATT
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-84]** If the app has a separate privacy control (e.g., CMP/consent screen), is it clear that the control doesn't override the user's previous ATT choice (one of the points Apple asks developers to "please consider")?
   - quote: "Be clear that the control doesn't override their previous ATT choice."
@@ -1103,6 +1118,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > Yes, you can choose to include screens in order to comply with applicable law or government regulations. However, your app must always respect the user’s response to the App Tracking Transparency prompt, even if their response to other prompts conflicts. Guideline 5.1.1 (iv) states: "Apps must respect the user's permission settings and not attempt to manipulate, trick, or force people to consent to unnecessary data access." This includes altering a user’s App Tracking Transparency response by only respecting their response to other permission requests. You can use third-party Consent Management Platforms to add these permission requests, as long as your collection and use of device or user data collected from your app does not contradict a user’s App Tracking Transparency response. You remain fully responsible to ensure that your collection and use of information linked to users’ identity or to their device, including information used to track users, complies with applicable law or government regulations.
 
 **Applies to:** Apps using consent screens or Consent Management Platforms alongside ATT
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-85]** When the ATT answer conflicts with a CMP/consent answer, does the app always respect the ATT answer (e.g., ATT denied + CMP accepted → no tracking)?
   - quote: "your app must always respect the user’s response to the App Tracking Transparency prompt, even if their response to other prompts conflicts."
@@ -1121,6 +1137,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > - You remain fully responsible to ensure that your implementation of consent requests in combination with the ATT prompt complies with applicable privacy laws.
 
 **Applies to:** Apps whose ATT purpose string references a prior legal consent
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-86]** If the ATT purpose string references a prior legal consent, does the app skip the ATT prompt for users who opted out of all relevant legal consent choices?
   - quote: "You should not display the ATT prompt to users who have opted out of all relevant legal consent choices made in the previous, separate control."
@@ -1140,6 +1157,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > - You remain fully responsible to ensure that your implementation of the App Tracking Transparency system prompt and any corresponding information surfaced via the “Additional Information” text button complies with applicable privacy laws.
 
 **Applies to:** Apps using the EU "Additional Information" button
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-87]** When the Additional Information screen is shown, does the app avoid accessing the IDFA or collecting tracking data until the user grants permission in the ATT prompt?
   - quote: "you cannot access the device’s advertising identifier, or otherwise collect and use device or user data from your app as described in the App Tracking Transparency system prompt, until the user has granted your app permission in that prompt."
@@ -1183,6 +1201,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > - Check trackingAuthorizationStatus to determine the current authorization status; see ATTrackingManager.AuthorizationStatus for the possible values.
 
 **Applies to:** Apps that collect data about people and share it with other companies to track them across apps and websites
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-89]** If the app links `AppTrackingTransparency`, is `NSUserTrackingUsageDescription` present in the app target's properties?
   - quote: "Add the NSUserTrackingUsageDescription key to your app’s target properties in Xcode."
@@ -1228,6 +1247,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 > In France, Germany, Italy, Poland, and Romania, the full-page sheet displays the NSUserTrackingMarkdownUsageDescription string with support for rich-text elements if you include it in your app’s target configuration in Xcode.
 
 **Applies to:** Apps that call requestTrackingAuthorization
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-91]** Is `requestTrackingAuthorization` called while the app is active (not from `didFinishLaunching` before the app becomes active, nor from an app extension), so the prompt actually appears?
   - quote: "The app’s state is a value other than `UIApplicationStateActive`."
@@ -1300,6 +1320,7 @@ How to use this file: each `## LABEL.<x>` unit reproduces Apple's text verbatim,
 Availability (from the page metadata): iOS 27.2, iPadOS 27.2, Mac Catalyst 27.2.
 
 **Applies to:** Apps that call the expanded-interface ATT request (iOS/iPadOS 27.2+)
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-94]** If the app uses the expanded-interface API, is the call guarded for iOS/iPadOS 27.2 availability with a fallback to `requestTrackingAuthorization(completionHandler:)`?
   - quote: "which is equivalent to calling requestTrackingAuthorization(completionHandler:)."
@@ -1344,6 +1365,7 @@ Availability (from the page metadata): iOS 27.2, iPadOS 27.2, Mac Catalyst 27.2.
 | ATTrackingManager.AuthorizationStatus.restricted | A value that indicates the system restricts tracking authorization. |
 
 **Applies to:** Apps that use App Tracking Transparency
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-97]** Does the app treat only `.authorized` as permission to track, and treat `.denied` and `.restricted` as no permission?
   - quote: "A value that indicates someone grants your app permission to access data your app can use to track a person or device."
@@ -1378,6 +1400,7 @@ Availability (from the page metadata): iOS 27.2, iPadOS 27.2, Mac Catalyst 27.2.
 | Platforms | iOS 14.0+, iPadOS 14.0+, tvOS 14.0+, visionOS 1.0+ |
 
 **Applies to:** Apps that use the App Tracking Transparency framework
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-98]** Is `NSUserTrackingUsageDescription` present whenever the app uses the ATT framework (otherwise it crashes)?
   - quote: "This key is required. Your app crashes if it attempts to use the App Tracking Transparency framework without including the key in your target’s properties in Xcode."
@@ -1419,6 +1442,7 @@ Availability (from the page metadata): iOS 27.2, iPadOS 27.2, Mac Catalyst 27.2.
 | Platforms | iOS 27.2+, iPadOS 27.2+ |
 
 **Applies to:** Apps that provide NSUserTrackingMarkdownUsageDescription (optional)
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-100]** If `NSUserTrackingMarkdownUsageDescription` is provided, does it use only supported Markdown (bold, italic, bullet lists, paragraph breaks — no underline)?
   - quote: "The format of the string is Markdown text; you can apply bold or italic style, but it doesn’t support underline. You can include bullet lists and paragraph breaks."
@@ -1450,6 +1474,7 @@ Availability (from the page metadata): iOS 27.2, iPadOS 27.2, Mac Catalyst 27.2.
 > As a best practice, don’t store the advertising identifier value; access advertisingIdentifier instead. Users can change their authorization for tracking at any time in Settings > Privacy > Tracking. Check your app’s authorization using the App Tracking Transparency API doc://com.apple.documentation/documentation/apptrackingtransparency/attrackingmanager/3547038-trackingauthorizationstatus to determine the user’s intent.
 
 **Applies to:** Apps that read the advertising identifier
+**Requires:** tracking, ads, analytics
 
 - **[LABEL-101]** Does the app use the advertising identifier only for advertising and request tracking authorization before reading it?
   - quote: "your app must request tracking authorization before it can get the advertising identifier."
@@ -1479,6 +1504,7 @@ Availability (from the page metadata): iOS 27.2, iPadOS 27.2, Mac Catalyst 27.2.
 > Important: In the European Union, you can use requestTrackingAuthorization(preferExpandedInterface:additionalInformationAction:completionHandler:) to add an optional Additional Information button to the prompt, which provides more details to assist people in their decision-making. The authorization Ul is a full-page sheet that supports rich-text formatting.
 
 **Applies to:** Apps that use App Tracking Transparency
+**Requires:** tracking, ads, analytics
 
 **Status:** Informational — the requirements on this page are restated on the method and property pages; see LABEL.Y, LABEL.Z, and LABEL.AA (checks LABEL-90 to LABEL-97). No additional checks.
 
