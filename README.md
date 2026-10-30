@@ -47,7 +47,7 @@ git clone https://github.com/ilan-uzan/app-store-preflight.git
 ln -s "$PWD/app-store-preflight/skills/app-store-preflight" ~/.claude/skills/app-store-preflight
 ```
 
-Requirements: Claude Code, Python 3.9+ (standard library only), macOS with Xcode for the build/Simulator steps. Optional: [Claude in Chrome](https://claude.com/chrome) or the [Playwright MCP](https://github.com/microsoft/playwright-mcp) for the App Store Connect pass.
+Requirements: Claude Code, Python 3.9+ (standard library only), macOS with Xcode for the build/Simulator steps. Optional: [Claude in Chrome](https://claude.com/chrome) or the [Playwright MCP](https://github.com/microsoft/playwright-mcp) for the App Store Connect pass, and [AXe](https://github.com/cameroncooke/AXe) (`brew install cameroncooke/axe/axe`) so the Simulator pass can tap through your app.
 
 ## Use
 

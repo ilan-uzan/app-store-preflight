@@ -39,7 +39,7 @@ Skip any question the user already answered in their request.
 
 - **Mode**: "Audit + fix (Recommended)": audit, then fix confirmed failures on a new git branch. "Audit only": report only, no changes.
 - **App Store Connect**: "Claude in Chrome (Recommended)" / "Playwright MCP" / "Skip": the browser pass reads App Store Connect without changing anything and compares it with the app. Only offer the options whose tools are present (`mcp__claude-in-chrome__*`, `mcp__playwright__*`).
-- **Simulator run**: "Static only (Recommended, faster)" / "Build and run in Simulator": builds the app, launches it, and walks the permission prompts, sign-in, settings and paywall.
+- **Simulator run**: "Static only (Recommended, faster)" / "Build and run in Simulator": builds the app, launches it, and walks the permission prompts, sign-in, settings and paywall. Walking those flows needs a UI driver: the [AXe](https://github.com/cameroncooke/AXe) CLI (`command -v axe`) or an Xcode/simulator MCP. Without one, it only launches the app and takes screenshots. If neither is installed, say so in the option description; don't install anything without asking. A walk from a fresh install uninstalls the app from the chosen Simulator first, which erases that copy's data. If `xcrun simctl listapps booted` shows the bundle ID installed, ask before allowing it and pass `allowReinstall` accordingly. Another session may be using that Simulator.
 - **Thoroughness**: "Standard (Recommended)": one skeptic per failure. "Thorough": three skeptics per failure, kept only if a majority uphold it.
 
 If App Store Connect was chosen, ask the user to make sure they are signed in to https://appstoreconnect.apple.com in that browser and to name the app as it appears there (needed when the account has several apps).
@@ -63,7 +63,7 @@ Call Workflow with `name: "app-store-preflight:preflight"` (the plugin install).
 ```json
 { "projectRoot": "<abs project>", "runDir": "<abs RUN>", "skillDir": "<abs skill>",
   "mode": "fix" | "audit", "asc": "chrome" | "playwright" | "none", "ascApp": "<name or null>",
-  "runtime": true | false, "verifyVotes": 1 | 3,
+  "runtime": true | false, "allowReinstall": true | false, "verifyVotes": 1 | 3,
   "batches": [{"file": "..."}, ...] }
 ```
 
