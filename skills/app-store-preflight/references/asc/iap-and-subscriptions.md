@@ -304,6 +304,11 @@ Field limits (verbatim values from the tables above):
   - surface: asc
   - verify: For each IAP/subscription used with promotion, win-back offers, Contingent Pricing, or offer codes, open App Store Connect > product > Image section; confirm an image is present and its status is approved.
   - fix: Upload a compliant image (see IAP-19) and submit it for review.
+- **[IAP-129]** Does each promotional image actually depict the In-App Purchase or offer it promotes (what the customer gets), rather than generic app art?
+  - quote: "This image represents your In-App Purchase in all countries or regions where your product is available."
+  - surface: asc
+  - verify: App Store Connect > each promoted In-App Purchase / subscription with a win-back offer > Image: open the image and compare it with the product's display name, description and offer. FAIL if it shows only the app icon, logo, a screenshot or generic branding with nothing identifying the purchase or offer. Implementation guidance, not Apple text: App Review has rejected promotional images that "do not sufficiently represent" the promoted In-App Purchase or win-back offer.
+  - fix: Replace the image with artwork that shows the specific purchase or offer (e.g. the premium feature or the offer itself), then resubmit the In-App Purchase for review.
 - **[IAP-25]** When submitting the In-App Purchase, are both review notes and a review screenshot included in Review Information?
   - quote: "When submitting your In-App Purchase for review, include review notes and a screenshot to help Apple's review process."
   - surface: asc
